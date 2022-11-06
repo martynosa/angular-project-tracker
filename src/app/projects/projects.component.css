@@ -1,0 +1,13 @@
+.title {
+  text-align: center;
+  font-size: 36px;
+}
+
+.container {
+  max-width: 1024px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  padding: 12px 24px;
+}
