@@ -1,14 +1,31 @@
-/* You can add global styles to this file, and also import other style files */
-
 @import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,500;0,600;0,700;0,800;0,900;1,400&display=swap");
+@import url("./var.css");
 
 * {
-  box-sizing: border-box;
-  margin: 0;
   padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
 }
 
 body {
-  background-color: #f1f3f5;
   font-family: "Rubik", sans-serif;
+  line-height: 1;
+
+  color: var(--light-color);
+  background-color: var(--dark-bg-color);
+}
+
+::-webkit-scrollbar {
+  width: 1.6rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--violet-color);
+  border-radius: 16px;
+
+  border: 3px solid var(--dark-bg-color);
 }

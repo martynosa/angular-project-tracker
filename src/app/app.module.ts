@@ -8,6 +8,7 @@ import { LandingComponent } from './landing/landing.component';
 import { AboutComponent } from './about/about.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { NavComponent } from './nav/nav.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { NavComponent } from './nav/nav.component';
     AboutComponent,
     ProjectsComponent,
     NavComponent,
+    ErrorPageComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],

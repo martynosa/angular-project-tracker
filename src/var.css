@@ -1,0 +1,113 @@
+:root {
+  /* GENERAL */
+  --nav-height: 4.8rem;
+  --notification-height: 4.8rem;
+  --animation: all 0.3s ease-in-out;
+
+  /* FONT_SIZE */
+  --mx-fs: 5.2rem;
+  --bg-fs: 4.8rem;
+  --md-fs: 2.4rem;
+  --default-fs: 1.6rem;
+  --sm-fs: 1.4rem;
+  --mn-fs: 1.2rem;
+
+  /* COLOR */
+  --light-color: #dee2e6;
+  --dark-color: #343a40;
+  --violet-color: #845ef7;
+  --green-color: #51cf66;
+  --blue-color: #339af0;
+  --orange-color: #ff922b;
+
+  --error-color: #ff6b6b;
+  --input-bg-color: #dee2e6;
+  --hvr-color: #9775fa;
+
+  /* BACKGROUND_COLOR */
+  --light-bg-color: #f1f3f5;
+  --dark-bg-color: #212529;
+
+  /* SHADOW */
+  --focus-shdw: 0 0 0 0.4rem #495057;
+  --error-shdw: 0 0 0 0.4rem #ff6b6b;
+
+  /* BORDER_RADIUS */
+  --default-brdr-rd: 6px;
+
+  /* FONT_WEIGHT */
+  --mx-weight: 900;
+  --md-weight: 700;
+  --default-weight: 500;
+  --sm-weight: 400;
+
+  /* GAP */
+  --bg-gap: 4.8rem;
+  --md-gap: 2.4rem;
+  --default-gap: 1.2rem;
+  --sm-gap: 0.6rem;
+
+  /* PADDING */
+  --bg-1v-pd: 4.8rem;
+  --md-1v-pd: 2.4rem;
+  --default-1v-pd: 1.6rem;
+  --sm-1v-pd: 1.2rem;
+
+  --bg-2v-pd: 2.4rem 4.8rem;
+  --md-2v-pd: 1.2rem 2.4rem;
+  --default-2v-pd: 0.6rem 1.2rem;
+  --sm-2v-pd: 0.3rem 0.6rem;
+
+  /* MARGINS */
+  --m-48: 4.8rem;
+  --m-24: 2.4rem;
+  --m-12: 1.2rem;
+  --m-06: 0.6rem;
+  --m-03: 0.3rem;
+
+  /* BUTTON_COLOR */
+  --violet-btn-bg-color: #845ef7;
+  --violet-btn-shdw-color: #5f3dc4;
+  --violet-btn-hvr-color: #9775fa;
+
+  --orange-btn-bg-color: #ff922b;
+  --orange-btn-shdw-color: #d9480f;
+  --orange-btn-hvr-color: #ffa94d;
+
+  --green-btn-bg-color: #51cf66;
+  --green-btn-shdw-color: #2b8a3e;
+  --green-btn-hvr-color: #69db7c;
+
+  --grey-btn-bg-color: #dee2e6;
+  --grey-btn-shdw-color: #adb5bd;
+  --grey-btn-hvr-color: #f1f3f5;
+
+  --inactive-btn-font-color: #212529;
+  --inactive-btn-bg-color: #495057;
+
+  /* NOTIFICATION_COLOR */
+  --err-not-bg-color: #ff6b6b;
+  --err-not-shdw-color: 0 0.4rem 0 #c92a2a;
+
+  --sccss-not-bg-color: #94d82d;
+  --sccss-not-shdw-color: 0 0.4rem 0 #5c940d;
+
+  /* TAG_COLOR */
+  --red-tag-color: #c92a2a;
+  --pink-tag-color: #a61e4d;
+  --grape-tag-color: #862e9c;
+  --violet-tag-color: #5f3dc4;
+  --indigo-tag-color: #364fc7;
+  --blue-tag-color: #1864ab;
+  --cyan-tag-color: #0b7285;
+  --teal-tag-color: #087f5b;
+  --green-tag-color: #2b8a3e;
+  --lime-tag-color: #5c940d;
+  --yelow-tag-color: #e67700;
+  --orange-tag-color: #d9480f;
+
+  /* CARD_SHADOW_COLOR */
+  --new-card-shadow: #1864ab;
+  --inProgress-card-shadow: #d9480f;
+  --completed-card-shadow: #2b8a3e;
+}

@@ -1,6 +1,6 @@
 .nav {
+  height: var(--nav-height);
   width: 100%;
-  background-color: #dee2e6;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -11,6 +11,6 @@
 .nav a {
   text-decoration: none;
   font-size: 24px;
-  color: #d9480f;
+  color: var(--light-color);
   text-transform: uppercase;
 }
