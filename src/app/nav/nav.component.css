@@ -1,16 +1,24 @@
 .nav {
   height: var(--nav-height);
-  width: 100%;
+  font-size: var(--default-fs);
+  font-weight: var(--md-weight);
+  padding: var(--default-2v-pd);
+
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 24px;
-  padding: 12px 24px;
+  gap: var(--md-gap);
 }
 
 .nav a {
-  text-decoration: none;
-  font-size: 24px;
-  color: var(--light-color);
+  color: inherit;
+  font-size: inherit;
   text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: var(--animation);
+}
+
+.nav a:hover {
+  color: var(--hvr-color);
 }
