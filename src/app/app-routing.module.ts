@@ -5,7 +5,6 @@ import { LandingComponent } from './landing/landing.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { ProjectsComponent } from './projects/projects.component';
-import { AboutComponent } from './about/about.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 
 const routes: Routes = [
@@ -14,7 +13,6 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'projects', component: ProjectsComponent },
-  { path: 'about', component: AboutComponent },
   { path: '**', component: ErrorPageComponent }, // Wildcard route for a 404 page
 ];
 
