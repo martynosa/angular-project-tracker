@@ -1,0 +1,47 @@
+<div class="container">
+  <form class="form" #loginForm="ngForm" (ngSubmit)="loginHandler(loginForm)">
+    <div class="input-group">
+      <label for="email">Email</label>
+      <input
+        id="email"
+        name="email"
+        type="text"
+        #emailInput="ngModel"
+        ngModel
+        required
+        email
+      />
+      <ng-container *ngIf="emailInput.touched">
+        <p class="error-message" *ngIf="emailInput.errors?.['email']">
+          Invalid email.
+        </p>
+        <p class="error-message" *ngIf="emailInput.errors?.['required']">
+          Email is required.
+        </p>
+      </ng-container>
+    </div>
+
+    <div class="input-group">
+      <label for="password">Password</label>
+      <input
+        id="password"
+        name="password"
+        type="password"
+        #passwordInput="ngModel"
+        ngModel
+        required
+        minlength="6"
+      />
+      <ng-container *ngIf="passwordInput.touched">
+        <p class="error-message" *ngIf="passwordInput.errors?.['minlength']">
+          Password must be 6 characters or more.
+        </p>
+        <p class="error-message" *ngIf="passwordInput.errors?.['required']">
+          Password is required.
+        </p>
+      </ng-container>
+    </div>
+
+    <button class="btn">Login</button>
+  </form>
+</div>

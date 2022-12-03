@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+
 import { environment } from '../../environments/environment';
 import { User, Credentials } from '../types';
 
@@ -23,7 +24,7 @@ export class AuthService {
           'project-tracker-angular',
           JSON.stringify(response.data)
         );
-        this.router.navigate(['']);
+        this.router.navigate(['projects']);
       });
   }
 }
