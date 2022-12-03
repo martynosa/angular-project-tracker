@@ -1,24 +1,68 @@
 <div class="container">
-  <form class="form">
+  <form class="form" [formGroup]="form">
     <div class="input-group">
       <label for="email">Email</label>
-      <input id="email" name="email" type="text" />
+      <input id="email" type="text" formControlName="email" />
+      <ng-container *ngIf="form.get('email')?.touched">
+        <p class="error-message" *ngIf="form.get('email')?.errors?.['email']">
+          Invalid email address!
+        </p>
+        <p
+          class="error-message"
+          *ngIf="form.get('email')?.errors?.['required']"
+        >
+          Email is required!
+        </p>
+      </ng-container>
     </div>
 
     <div class="input-group">
       <label for="name">Name</label>
-      <input id="name" name="name" type="text" />
+      <input id="name" type="text" formControlName="name" />
+      <ng-container *ngIf="form.get('name')?.touched">
+        <p
+          class="error-message"
+          *ngIf="form.get('name')?.errors?.['minlength']"
+        >
+          Name with 3 or more characters required!
+        </p>
+        <p class="error-message" *ngIf="form.get('name')?.errors?.['required']">
+          Name is required!
+        </p>
+      </ng-container>
     </div>
 
-    <div class="input-group">
-      <label for="password">Password</label>
-      <input id="password" name="password" type="password" />
-    </div>
+    <ng-container formGroupName="passwords">
+      <div class="input-group">
+        <label for="password">Password</label>
+        <input id="password" type="password" formControlName="password" />
+        <ng-container *ngIf="form.get('passwords')?.get('password')?.touched">
+          <p
+            class="error-message"
+            *ngIf="form.get('passwords')?.get('password')?.errors?.['minlength']"
+          >
+            Password with 6 or more characters required!
+          </p>
+          <p
+            class="error-message"
+            *ngIf="form.get('passwords')?.get('password')?.errors?.['required']"
+          >
+            Password is required!
+          </p>
+        </ng-container>
+      </div>
 
-    <div class="input-group">
-      <label for="rePassword">Repeat Password</label>
-      <input id="rePassword" name="rePassword" type="password" />
-    </div>
+      <div class="input-group">
+        <label for="rePassword">Repeat Password</label>
+        <input id="rePassword" type="password" formControlName="rePassword" />
+        <p
+          class="error-message"
+          *ngIf="form.get('passwords')?.errors?.['matchPassword'] && form.get('passwords')?.get('rePassword')?.touched"
+        >
+          Repeat password do not match Password!
+        </p>
+      </div>
+    </ng-container>
 
     <button class="btn">Register</button>
   </form>

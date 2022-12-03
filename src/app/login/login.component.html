@@ -13,10 +13,10 @@
       />
       <ng-container *ngIf="emailInput.touched">
         <p class="error-message" *ngIf="emailInput.errors?.['email']">
-          Invalid email.
+          Invalid email address!
         </p>
         <p class="error-message" *ngIf="emailInput.errors?.['required']">
-          Email is required.
+          Email is required!
         </p>
       </ng-container>
     </div>
@@ -34,10 +34,10 @@
       />
       <ng-container *ngIf="passwordInput.touched">
         <p class="error-message" *ngIf="passwordInput.errors?.['minlength']">
-          Password must be 6 characters or more.
+          Password with 6 or more characters required!
         </p>
         <p class="error-message" *ngIf="passwordInput.errors?.['required']">
-          Password is required.
+          Password is required!
         </p>
       </ng-container>
     </div>
