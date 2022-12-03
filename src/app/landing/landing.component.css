@@ -29,16 +29,7 @@
   margin-bottom: var(--m-48);
 }
 
-.img-box {
-  width: 50%;
-}
-
-.img {
-  width: 100%;
-}
-
 .btn {
-  font-family: inherit;
   font-size: var(--md-fs);
   color: var(--dark-color);
   text-decoration: none;

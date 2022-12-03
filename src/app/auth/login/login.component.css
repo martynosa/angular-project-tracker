@@ -21,8 +21,6 @@
 }
 
 .input-group input {
-  font-family: inherit;
-  font-size: inherit;
   background-color: var(--input-bg-color);
   border-radius: var(--default-brdr-rd);
   padding: var(--default-2v-pd);
@@ -38,7 +36,6 @@
 
 .btn {
   width: 100%;
-  font-family: inherit;
   font-size: var(--md-fs);
   color: var(--dark-color);
   background-color: var(--violet-color);
