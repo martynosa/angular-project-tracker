@@ -11,6 +11,13 @@ export interface Credentials {
   password: string;
 }
 
+export interface RegisterUser {
+  email: string | null | undefined;
+  name: string | null | undefined;
+  password: string | null | undefined;
+  rePassword: string | null | undefined;
+}
+
 export interface project {
   title: String;
   description: String;

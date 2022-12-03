@@ -14,7 +14,9 @@ export class LoginComponent {
 
   currentUser!: User;
 
-  loginHandler(form: NgForm): any {
+  loginHandler(form: NgForm): void {
+    if (!form.valid) return;
+
     this.AuthService.login(form.value);
   }
 }

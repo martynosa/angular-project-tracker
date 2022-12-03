@@ -1,5 +1,5 @@
 <div class="container">
-  <form class="form" [formGroup]="form">
+  <form class="form" [formGroup]="form" (ngSubmit)="registerHandler()">
     <div class="input-group">
       <label for="email">Email</label>
       <input id="email" type="text" formControlName="email" />
@@ -57,7 +57,7 @@
         <input id="rePassword" type="password" formControlName="rePassword" />
         <p
           class="error-message"
-          *ngIf="form.get('passwords')?.errors?.['matchPassword'] && form.get('passwords')?.get('rePassword')?.touched"
+          *ngIf="form.get('passwords')?.errors?.['matchPassword']"
         >
           Repeat password do not match Password!
         </p>

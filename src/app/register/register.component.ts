@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+
+import { AuthService } from '../services/auth-service';
+import { RegisterUser, User } from '../types';
 import { matchPasswordsValidator } from '../validators/match-password-validator';
 
 @Component({
@@ -20,5 +23,23 @@ export class RegisterComponent {
     ),
   });
 
-  constructor(private formBuilder: FormBuilder) {}
+  currentUser!: User;
+
+  registerHandler(): void {
+    const user: RegisterUser = {
+      email: this.form.value.email,
+      name: this.form.value.name,
+      password: this.form.value.passwords?.password,
+      rePassword: this.form.value.passwords?.rePassword,
+    };
+
+    if (!this.form.valid) return;
+
+    this.authService.register(user);
+  }
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private authService: AuthService
+  ) {}
 }
