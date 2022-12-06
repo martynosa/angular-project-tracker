@@ -53,4 +53,15 @@ export class AuthService {
     this.currentUser$.next(this.currentUser);
     localStorage.clear();
   }
+
+  autoLogin(): void {
+    let pastUser = JSON.parse(
+      localStorage.getItem('project-tracker-angular') || ''
+    );
+
+    if (!pastUser) return;
+
+    this.currentUser = pastUser;
+    this.currentUser$.next(this.currentUser);
+  }
 }
