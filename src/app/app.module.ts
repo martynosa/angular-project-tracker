@@ -6,7 +6,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { appInterceptorProvider } from './app.interceptor';
-import { AuthGuard } from './guards/auth-guard';
 
 import { AppComponent } from './app.component';
 import { CardComponent } from './card/card.component';
