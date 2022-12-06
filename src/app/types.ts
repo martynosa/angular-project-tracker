@@ -6,12 +6,12 @@ export interface User {
   token: string;
 }
 
-export interface Credentials {
+export interface LoginCredentials {
   email: string;
   password: string;
 }
 
-export interface RegisterUser {
+export interface RegisterCredentials {
   email: string | null | undefined;
   name: string | null | undefined;
   password: string | null | undefined;

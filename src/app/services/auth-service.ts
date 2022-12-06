@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
 import { environment } from '../../environments/environment';
-import { User, Credentials, RegisterUser } from '../types';
+import { User, LoginCredentials, RegisterCredentials } from '../types';
 
 @Injectable({
   providedIn: 'root',
@@ -11,13 +11,17 @@ import { User, Credentials, RegisterUser } from '../types';
 export class AuthService {
   constructor(private http: HttpClient, private router: Router) {}
 
-  currentUser!: User;
+  currentUser: User | null = null;
 
-  login(credentials: Credentials): void {
+  isAuth(): boolean {
+    if (this.currentUser !== null) return true;
+
+    return !!localStorage.getItem('project-tracker-angular');
+  }
+
+  login(loginCredentials: LoginCredentials): void {
     this.http
-      .post(`${environment.AUTH_URL}/login`, JSON.stringify(credentials), {
-        headers: { 'Content-Type': 'application/json' },
-      })
+      .post(`${environment.AUTH_URL}/login`, loginCredentials)
       .subscribe((response: any) => {
         this.currentUser = response.data;
         localStorage.setItem(
@@ -28,11 +32,9 @@ export class AuthService {
       });
   }
 
-  register(user: RegisterUser): void {
+  register(registerCredentials: RegisterCredentials): void {
     this.http
-      .post(`${environment.AUTH_URL}/register`, JSON.stringify(user), {
-        headers: { 'Content-Type': 'application/json' },
-      })
+      .post(`${environment.AUTH_URL}/register`, registerCredentials)
       .subscribe((response: any) => {
         this.currentUser = response.data;
         localStorage.setItem(
@@ -41,5 +43,10 @@ export class AuthService {
         );
         this.router.navigate(['projects']);
       });
+  }
+
+  logout(): void {
+    this.currentUser = null;
+    localStorage.clear();
   }
 }

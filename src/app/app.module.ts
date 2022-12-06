@@ -5,12 +5,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { appInterceptorProvider } from './app.interceptor';
+import { AuthGuard } from './guards/auth-guard';
+
 import { AppComponent } from './app.component';
 import { CardComponent } from './card/card.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { NavComponent } from './nav/nav.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { LandingComponent } from './landing/landing.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +22,7 @@ import { RegisterComponent } from './register/register.component';
     CardComponent,
     ProjectsComponent,
     NavComponent,
+    LandingComponent,
     LoginComponent,
     RegisterComponent,
   ],
@@ -28,7 +33,7 @@ import { RegisterComponent } from './register/register.component';
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [appInterceptorProvider, AuthGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

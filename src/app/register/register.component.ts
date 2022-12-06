@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
 import { AuthService } from '../services/auth-service';
-import { RegisterUser, User } from '../types';
+import { RegisterCredentials, User } from '../types';
 import { matchPasswordsValidator } from '../validators/match-password-validator';
 
 @Component({
@@ -11,6 +11,11 @@ import { matchPasswordsValidator } from '../validators/match-password-validator'
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent {
+  constructor(
+    private formBuilder: FormBuilder,
+    private authService: AuthService
+  ) {}
+
   form = this.formBuilder.group({
     email: ['', [Validators.required, Validators.email]],
     name: ['', [Validators.required, Validators.minLength(3)]],
@@ -23,23 +28,16 @@ export class RegisterComponent {
     ),
   });
 
-  currentUser!: User;
-
   registerHandler(): void {
-    const user: RegisterUser = {
+    if (!this.form.valid) return;
+
+    const registerCredentials: RegisterCredentials = {
       email: this.form.value.email,
       name: this.form.value.name,
       password: this.form.value.passwords?.password,
       rePassword: this.form.value.passwords?.rePassword,
     };
 
-    if (!this.form.valid) return;
-
-    this.authService.register(user);
+    this.authService.register(registerCredentials);
   }
-
-  constructor(
-    private formBuilder: FormBuilder,
-    private authService: AuthService
-  ) {}
 }
