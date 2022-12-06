@@ -33,7 +33,7 @@ import { LandingComponent } from './landing/landing.component';
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [appInterceptorProvider, AuthGuard],
+  providers: [appInterceptorProvider],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
