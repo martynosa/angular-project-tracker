@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 
 import { environment } from '../../environments/environment';
 import { User, LoginCredentials, RegisterCredentials } from '../types';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -13,10 +14,10 @@ export class AuthService {
 
   currentUser: User | null = null;
 
-  isAuth(): boolean {
-    if (this.currentUser !== null) return true;
+  currentUser$ = new Subject<User | null>();
 
-    return !!localStorage.getItem('project-tracker-angular');
+  isAuth() {
+    return !!this.currentUser;
   }
 
   login(loginCredentials: LoginCredentials): void {
@@ -24,6 +25,7 @@ export class AuthService {
       .post(`${environment.AUTH_URL}/login`, loginCredentials)
       .subscribe((response: any) => {
         this.currentUser = response.data;
+        this.currentUser$.next(this.currentUser);
         localStorage.setItem(
           'project-tracker-angular',
           JSON.stringify(response.data)
@@ -37,6 +39,7 @@ export class AuthService {
       .post(`${environment.AUTH_URL}/register`, registerCredentials)
       .subscribe((response: any) => {
         this.currentUser = response.data;
+        this.currentUser$.next(this.currentUser);
         localStorage.setItem(
           'project-tracker-angular',
           JSON.stringify(response.data)
@@ -47,6 +50,7 @@ export class AuthService {
 
   logout(): void {
     this.currentUser = null;
+    this.currentUser$.next(this.currentUser);
     localStorage.clear();
   }
 }

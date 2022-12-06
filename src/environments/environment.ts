@@ -6,6 +6,7 @@ export const environment = {
   production: false,
   AUTH_URL: 'http://localhost:5000/auth',
   ITEMS_URL: 'http://localhost:5000/items',
+  PHOTO_URL: 'http://localhost:5000/users',
 };
 
 /*

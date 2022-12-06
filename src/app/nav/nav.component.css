@@ -10,7 +10,19 @@
   gap: var(--md-gap);
 }
 
-.nav a {
+.inner {
+  justify-content: space-between;
+}
+
+.nav div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--md-gap);
+}
+
+.nav a,
+.nav button {
   color: inherit;
   font-size: inherit;
   text-transform: uppercase;
@@ -19,6 +31,12 @@
   transition: var(--animation);
 }
 
-.nav a:hover {
+.nav button {
+  background-color: transparent;
+  border: none;
+}
+
+.nav a:hover,
+.nav button:hover {
   color: var(--hvr-color);
 }
