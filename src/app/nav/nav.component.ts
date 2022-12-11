@@ -22,7 +22,6 @@ export class NavComponent implements OnInit {
   ngOnInit(): void {
     this.authService.currentUser$.subscribe((currentUser) => {
       this.currentUser = currentUser;
-      console.log(this.currentUser);
     });
   }
 }

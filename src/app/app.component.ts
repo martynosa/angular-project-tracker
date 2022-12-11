@@ -1,19 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { AuthService } from './services/auth-service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'angular-test';
-
-  // does not work properly -> data persistance
-  constructor(private authService: AuthService) {}
-
-  ngOnInit(): void {
-    console.log('exected');
-    this.authService.autoLogin();
-  }
 }

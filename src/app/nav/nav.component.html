@@ -2,8 +2,6 @@
   <a routerLink="/landing">Landing</a>
   <a routerLink="/login">Login</a>
   <a routerLink="/register">Register</a>
-  <button (click)="logoutHandler()">logout</button>
-  {{ currentUser | json }}
 </nav>
 
 <nav class="nav inner" *ngIf="currentUser !== null">

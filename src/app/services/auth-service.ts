@@ -26,10 +26,6 @@ export class AuthService {
       .subscribe((response: any) => {
         this.currentUser = response.data;
         this.currentUser$.next(this.currentUser);
-        localStorage.setItem(
-          'project-tracker-angular',
-          JSON.stringify(response.data)
-        );
         this.router.navigate(['projects']);
       });
   }
@@ -40,10 +36,6 @@ export class AuthService {
       .subscribe((response: any) => {
         this.currentUser = response.data;
         this.currentUser$.next(this.currentUser);
-        localStorage.setItem(
-          'project-tracker-angular',
-          JSON.stringify(response.data)
-        );
         this.router.navigate(['projects']);
       });
   }
@@ -51,16 +43,5 @@ export class AuthService {
   logout(): void {
     this.currentUser = null;
     this.currentUser$.next(this.currentUser);
-    localStorage.clear();
-  }
-
-  // does not work properly -> data persistance
-  autoLogin(): void {
-    let pastUser = localStorage.getItem('project-tracker-angular');
-    if (!pastUser) return;
-
-    this.currentUser = JSON.parse(pastUser);
-    this.currentUser$.next(this.currentUser);
-    console.log(this.currentUser);
   }
 }
