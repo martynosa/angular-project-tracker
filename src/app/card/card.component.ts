@@ -10,5 +10,9 @@ import { Project } from '../types';
 export class CardComponent {
   @Input() project!: Project;
 
+  changeStatus(type: string): void {
+    console.log(type);
+  }
+
   constructor() {}
 }

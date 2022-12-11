@@ -18,7 +18,15 @@ export interface RegisterCredentials {
   rePassword: string | null | undefined;
 }
 
+// PROJECT
+enum ProjectStatus {
+  new = 'new',
+  inProgress = 'inProgress',
+  completed = 'completed',
+}
+
 export interface Project {
-  title: String;
-  description: String;
+  name: string;
+  description: string;
+  status: ProjectStatus;
 }

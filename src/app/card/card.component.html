@@ -1,6 +1,16 @@
-<div class="card">
-  <h2>{{ project.title }}</h2>
+<div class="card {{ project.status }}">
+  <header class="card-header">
+    <h3 class="title">{{ project.name }}</h3>
+  </header>
   <p class="card-description">
     {{ project.description }}
   </p>
+  <div class="btn-group">
+    <button class="btn btn-back" (click)="changeStatus('degrade')">
+      &larr;
+    </button>
+    <button class="btn btn-forward" (click)="changeStatus('upgrade')">
+      &rarr;
+    </button>
+  </div>
 </div>

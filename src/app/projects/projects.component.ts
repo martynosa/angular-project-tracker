@@ -9,19 +9,30 @@ import { Project } from '../types';
   styleUrls: ['./projects.component.css'],
 })
 export class ProjectsComponent implements OnInit {
-  myProjects: Project[] = [
-    { title: 'first', description: 'My first project' },
-    { title: 'second', description: 'My second project' },
-    { title: 'third', description: 'My third project' },
-    { title: 'fourth', description: 'My fourth project' },
-  ];
+  isLoading!: boolean;
+  projects!: Project[];
+
+  newProjects!: Project[];
+  inProgressProjects!: Project[];
+  completedProjects!: Project[];
 
   constructor(private projectService: ProjectService) {}
 
   ngOnInit(): void {
+    this.projectService
+      .isLoading()
+      .subscribe((isLoading) => (this.isLoading = isLoading));
+
     this.projectService.getProjects().subscribe((projects) => {
-      this.myProjects = projects;
-      console.log(this.myProjects);
+      this.projects = projects;
+      console.log(this.projects);
+      this.newProjects = this.projects.filter((p) => p.status === 'new');
+      this.inProgressProjects = this.projects.filter(
+        (p) => p.status === 'inProgress'
+      );
+      this.completedProjects = this.projects.filter(
+        (p) => p.status === 'completed'
+      );
     });
     this.projectService.fetchProjects();
   }

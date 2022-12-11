@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
 import { environment } from '../../environments/environment';
-import { User, LoginCredentials, RegisterCredentials, Project } from '../types';
+import { Project } from '../types';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
@@ -12,20 +12,23 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class ProjectService {
   constructor(private httpClient: HttpClient, private router: Router) {}
 
-  private projects!: Project[] | [];
-
   private projects$ = new BehaviorSubject<Project[] | []>([]);
+  private isLoading$ = new BehaviorSubject<boolean>(true);
 
   getProjects(): Observable<Project[] | []> {
     return this.projects$;
+  }
+
+  isLoading(): Observable<boolean> {
+    return this.isLoading$;
   }
 
   fetchProjects(): void {
     this.httpClient
       .get(`${environment.ITEMS_URL}`)
       .subscribe((response: any) => {
-        this.projects = response.data;
-        this.projects$.next(this.projects);
+        this.projects$.next(response.data);
+        this.isLoading$.next(false);
       });
   }
 }

@@ -27,6 +27,7 @@ html {
 
 body {
   font-family: "Rubik", sans-serif;
+  font-size: var(--default-fs);
   line-height: 1;
 
   color: var(--light-color);
