@@ -6,10 +6,16 @@ import { AuthService } from '../services/auth-service';
   providedIn: 'root',
 })
 export class GuestGuard implements CanActivate {
-  constructor(private authService: AuthService, private router: Router) {}
+  isGuest: boolean = true;
+
+  constructor(private authService: AuthService, private router: Router) {
+    this.authService.getUser().subscribe((user) => {
+      this.isGuest = !!!user;
+    });
+  }
 
   canActivate(): boolean {
-    if (!this.authService.isAuth()) {
+    if (this.isGuest) {
       return true;
     } else {
       this.router.navigate(['/projects']);

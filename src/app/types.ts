@@ -18,7 +18,7 @@ export interface RegisterCredentials {
   rePassword: string | null | undefined;
 }
 
-export interface project {
+export interface Project {
   title: String;
   description: String;
 }

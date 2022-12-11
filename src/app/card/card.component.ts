@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { project } from '../types';
+import { Project } from '../types';
 
 @Component({
   selector: 'app-card',
@@ -8,7 +8,7 @@ import { project } from '../types';
   styleUrls: ['./card.component.css'],
 })
 export class CardComponent {
-  @Input() project!: project;
+  @Input() project!: Project;
 
   constructor() {}
 }
