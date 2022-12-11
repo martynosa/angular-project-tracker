@@ -1,11 +1,12 @@
-<nav class="nav" *ngIf="!currentUser">
+<nav class="nav" *ngIf="currentUser === null">
   <a routerLink="/landing">Landing</a>
   <a routerLink="/login">Login</a>
   <a routerLink="/register">Register</a>
   <button (click)="logoutHandler()">logout</button>
+  {{ currentUser | json }}
 </nav>
 
-<nav class="nav inner" *ngIf="!!currentUser">
+<nav class="nav inner" *ngIf="currentUser !== null">
   <div>
     <a routerLink="/projects">Projects</a>
     <a routerLink="/profile">Profile</a>
@@ -15,4 +16,5 @@
     <a routerLink="/profile">{{ currentUser.name }}</a>
     <button (click)="logoutHandler()">logout</button>
   </div>
+  {{ currentUser | json }}
 </nav>

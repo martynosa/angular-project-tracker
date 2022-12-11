@@ -54,14 +54,13 @@ export class AuthService {
     localStorage.clear();
   }
 
+  // does not work properly -> data persistance
   autoLogin(): void {
-    let pastUser = JSON.parse(
-      localStorage.getItem('project-tracker-angular') || ''
-    );
-
+    let pastUser = localStorage.getItem('project-tracker-angular');
     if (!pastUser) return;
 
-    this.currentUser = pastUser;
+    this.currentUser = JSON.parse(pastUser);
     this.currentUser$.next(this.currentUser);
+    console.log(this.currentUser);
   }
 }
