@@ -1,8 +1,14 @@
 <div class="container">
   <div class="search-group">
     <label for="search">🔍</label>
-    <input id="search" class="search-input" placeholder="Search ..." />
+    <input
+      id="search"
+      class="search-input"
+      placeholder="Search ..."
+      (keyup)="onKeyUp($event)"
+    />
   </div>
+
   <app-loading *ngIf="isLoading"></app-loading>
   <div class="projects-container">
     <div class="new-container">
@@ -11,12 +17,14 @@
         [project]="project"
       ></app-card>
     </div>
+
     <div class="inProgress-container">
       <app-card
         *ngFor="let project of inProgressProjects"
         [project]="project"
       ></app-card>
     </div>
+
     <div class="completed-container">
       <app-card
         *ngFor="let project of completedProjects"
