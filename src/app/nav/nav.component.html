@@ -2,7 +2,6 @@
   <a routerLink="/landing">Landing</a>
   <a routerLink="/login">Login</a>
   <a routerLink="/register">Register</a>
-  {{ currentUser | json }}
 </nav>
 
 <nav class="nav inner" *ngIf="currentUser">
@@ -12,8 +11,7 @@
   </div>
 
   <div>
-    <a routerLink="/profile">{{ currentUser.name }}</a>
-    <button (click)="logoutHandler()">logout</button>
+    <a class="username" routerLink="/profile">{{ currentUser.name }}</a>
+    <button class="logout" (click)="logoutHandler()">logout</button>
   </div>
-  {{ currentUser | json }}
 </nav>

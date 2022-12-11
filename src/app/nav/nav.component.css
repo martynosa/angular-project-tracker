@@ -36,6 +36,14 @@
   border: none;
 }
 
+.nav .username {
+  color: var(--orange-color);
+}
+
+.nav .logout {
+  color: var(--error-color);
+}
+
 .nav a:hover,
 .nav button:hover {
   color: var(--hvr-color);

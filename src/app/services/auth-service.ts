@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 
 import { environment } from '../../environments/environment';
 import { User, LoginCredentials, RegisterCredentials } from '../types';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -28,9 +28,9 @@ export class AuthService {
     this.http
       .post(`${environment.AUTH_URL}/login`, loginCredentials)
       .subscribe((response: any) => {
-        localStorage.setItem('angular', JSON.stringify(response.data));
         this.currentUser = response.data;
-        this.currentUser$.next(response.data);
+        this.currentUser$.next(this.currentUser);
+        localStorage.setItem('angular', JSON.stringify(this.currentUser));
         this.router.navigate(['projects']);
       });
   }
@@ -39,9 +39,9 @@ export class AuthService {
     this.http
       .post(`${environment.AUTH_URL}/register`, registerCredentials)
       .subscribe((response: any) => {
-        localStorage.setItem('angular', JSON.stringify(response.data));
         this.currentUser = response.data;
-        this.currentUser$.next(response.data);
+        this.currentUser$.next(this.currentUser);
+        localStorage.setItem('angular', JSON.stringify(this.currentUser));
         this.router.navigate(['projects']);
       });
   }
@@ -49,7 +49,7 @@ export class AuthService {
   logout(): void {
     localStorage.clear();
     this.currentUser = null;
-    this.currentUser$.next(null);
+    this.currentUser$.next(this.currentUser);
   }
 
   getPastUser(): void {
@@ -57,7 +57,7 @@ export class AuthService {
 
     if (Object.keys(pastUser).length === 0) {
       this.currentUser = null;
-      this.currentUser$.next(null);
+      this.currentUser$.next(this.currentUser);
       return;
     }
 
