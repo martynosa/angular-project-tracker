@@ -1,4 +1,4 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AuthService } from '../services/auth-service';
@@ -12,7 +12,7 @@ import { User } from '../types';
 export class NavComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router) {}
 
-  currentUser: User | null = null;
+  currentUser!: User | null;
 
   logoutHandler(): void {
     this.authService.logout();
@@ -20,8 +20,8 @@ export class NavComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.authService.currentUser$.subscribe((currentUser) => {
-      this.currentUser = currentUser;
+    this.authService.getUser().subscribe((user) => {
+      this.currentUser = user;
     });
   }
 }
