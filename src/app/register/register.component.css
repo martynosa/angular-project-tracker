@@ -1,8 +1,6 @@
 .container {
   min-height: calc(100vh - var(--nav-height));
 
-  font-size: var(--default-fs);
-
   display: flex;
   align-items: center;
   justify-content: center;

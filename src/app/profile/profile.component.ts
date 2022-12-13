@@ -18,7 +18,8 @@ export class ProfileComponent implements OnInit {
     private formBuilder: FormBuilder
   ) {}
 
-  isLoading!: boolean;
+  isUserLoading!: boolean;
+  areProjectsLoading!: boolean;
   currentUser!: User | null;
   projects!: Project[];
 
@@ -48,7 +49,11 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     this.projectService
       .isLoading()
-      .subscribe((isLoading) => (this.isLoading = isLoading));
+      .subscribe((isLoading) => (this.areProjectsLoading = isLoading));
+
+    this.authService
+      .isLoading()
+      .subscribe((isLoading) => (this.isUserLoading = isLoading));
 
     this.authService.getUser().subscribe((user) => {
       this.currentUser = user;

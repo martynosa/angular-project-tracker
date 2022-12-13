@@ -18,9 +18,14 @@ export class AuthService {
   constructor(private http: HttpClient, private router: Router) {}
 
   private currentUser$ = new BehaviorSubject<User | null>(null);
+  private isLoading$ = new BehaviorSubject<boolean>(true);
 
   getUser(): Observable<User | null> {
     return this.currentUser$;
+  }
+
+  isLoading(): Observable<boolean> {
+    return this.isLoading$;
   }
 
   login(loginCredentials: LoginCredentials): void {
@@ -29,6 +34,7 @@ export class AuthService {
       .subscribe((response: any) => {
         this.currentUser$.next(response.data);
         localStorage.setItem('angular', JSON.stringify(response.data));
+        this.isLoading$.next(false);
         this.router.navigate(['projects']);
       });
   }
@@ -39,6 +45,7 @@ export class AuthService {
       .subscribe((response: any) => {
         this.currentUser$.next(response.data);
         localStorage.setItem('angular', JSON.stringify(response.data));
+        this.isLoading$.next(false);
         this.router.navigate(['projects']);
       });
   }
@@ -52,12 +59,14 @@ export class AuthService {
       .subscribe((response: any) => {
         this.currentUser$.next(response.data);
         localStorage.setItem('angular', JSON.stringify(response.data));
+        this.isLoading$.next(false);
       });
   }
 
   logout(): void {
     localStorage.clear();
     this.currentUser$.next(null);
+    this.isLoading$.next(false);
   }
 
   getPastUser(): void {
@@ -65,8 +74,10 @@ export class AuthService {
 
     if (Object.keys(pastUser).length === 0) {
       this.currentUser$.next(null);
+      this.isLoading$.next(false);
       return;
     }
     this.currentUser$.next(pastUser);
+    this.isLoading$.next(false);
   }
 }

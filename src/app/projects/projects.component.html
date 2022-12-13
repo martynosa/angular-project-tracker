@@ -10,7 +10,7 @@
   </div>
 
   <app-loading *ngIf="isLoading"></app-loading>
-  <div class="projects-container">
+  <div class="projects-container" *ngIf="!isLoading">
     <div class="new-container">
       <app-card
         *ngFor="let project of newProjects"

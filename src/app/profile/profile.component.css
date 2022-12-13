@@ -1,8 +1,13 @@
 .container {
   min-height: calc(100vh - var(--nav-height));
 
-  font-size: var(--default-fs);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
+.content {
   display: flex;
   flex-direction: column;
   align-items: center;

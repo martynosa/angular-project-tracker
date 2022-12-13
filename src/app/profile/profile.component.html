@@ -1,68 +1,74 @@
 <div class="container">
-  <h1 class="name">{{ currentUser?.name }}</h1>
-  <div class="card">
-    <p class="email">✉️ Email: {{ currentUser?.email }}</p>
-    <p class="projects-count">✏️ Projects: {{ projects.length }}</p>
-  </div>
-  <!-- <h6>{{ currentUser | json }}</h6> -->
-  <form class="form" [formGroup]="form" (ngSubmit)="changePassword()">
-    <div class="input-group">
-      <label for="password">Password</label>
-      <input id="password" type="password" formControlName="password" />
-      <ng-container *ngIf="form.get('password')?.touched">
-        <p
-          class="error-message"
-          *ngIf="form.get('password')?.errors?.['minlength']"
-        >
-          Password with 6 or more characters required!
-        </p>
-        <p
-          class="error-message"
-          *ngIf="form.get('password')?.errors?.['required']"
-        >
-          Password is required!
-        </p>
-      </ng-container>
+  <app-loading *ngIf="isUserLoading || areProjectsLoading"></app-loading>
+  <div class="content" *ngIf="!(isUserLoading || areProjectsLoading)">
+    <h1 class="name">{{ currentUser?.name }}</h1>
+    <div class="card">
+      <p class="email">✉️ Email: {{ currentUser?.email }}</p>
+      <p class="projects-count">✏️ Projects: {{ projects.length }}</p>
     </div>
-
-    <ng-container formGroupName="newPasswords">
+    <form class="form" [formGroup]="form" (ngSubmit)="changePassword()">
       <div class="input-group">
-        <label for="newPassword">New password</label>
-        <input id="newPassword" type="password" formControlName="newPassword" />
-        <ng-container
-          *ngIf="form.get('newPasswords')?.get('newPassword')?.touched"
-        >
+        <label for="password">Password</label>
+        <input id="password" type="password" formControlName="password" />
+        <ng-container *ngIf="form.get('password')?.touched">
           <p
             class="error-message"
-            *ngIf="form.get('newPasswords')?.get('newPassword')?.errors?.['minlength']"
+            *ngIf="form.get('password')?.errors?.['minlength']"
           >
-            New password with 6 or more characters required!
+            Password with 6 or more characters required!
           </p>
           <p
             class="error-message"
-            *ngIf="form.get('newPasswords')?.get('newPassword')?.errors?.['required']"
+            *ngIf="form.get('password')?.errors?.['required']"
           >
-            New password is required!
+            Password is required!
           </p>
         </ng-container>
       </div>
 
-      <div class="input-group">
-        <label for="newRePassword">Repeat password</label>
-        <input
-          id="newRePassword"
-          type="password"
-          formControlName="newRePassword"
-        />
-        <p
-          class="error-message"
-          *ngIf="form.get('newPasswords')?.errors?.['matchPassword']"
-        >
-          Repeat password do not match new password!
-        </p>
-      </div>
-    </ng-container>
+      <ng-container formGroupName="newPasswords">
+        <div class="input-group">
+          <label for="newPassword">New password</label>
+          <input
+            id="newPassword"
+            type="password"
+            formControlName="newPassword"
+          />
+          <ng-container
+            *ngIf="form.get('newPasswords')?.get('newPassword')?.touched"
+          >
+            <p
+              class="error-message"
+              *ngIf="form.get('newPasswords')?.get('newPassword')?.errors?.['minlength']"
+            >
+              New password with 6 or more characters required!
+            </p>
+            <p
+              class="error-message"
+              *ngIf="form.get('newPasswords')?.get('newPassword')?.errors?.['required']"
+            >
+              New password is required!
+            </p>
+          </ng-container>
+        </div>
 
-    <button class="btn">Change password</button>
-  </form>
+        <div class="input-group">
+          <label for="newRePassword">Repeat password</label>
+          <input
+            id="newRePassword"
+            type="password"
+            formControlName="newRePassword"
+          />
+          <p
+            class="error-message"
+            *ngIf="form.get('newPasswords')?.errors?.['matchPassword']"
+          >
+            Repeat password do not match new password!
+          </p>
+        </div>
+      </ng-container>
+
+      <button class="btn">Change password</button>
+    </form>
+  </div>
 </div>

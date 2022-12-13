@@ -1,6 +1,5 @@
 .nav {
   height: var(--nav-height);
-  font-size: var(--default-fs);
   font-weight: var(--md-weight);
   padding: var(--default-2v-pd);
 
