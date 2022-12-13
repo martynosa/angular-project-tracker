@@ -18,6 +18,12 @@ export interface RegisterCredentials {
   rePassword: string | null | undefined;
 }
 
+export interface changePasswordCredentials {
+  password: string | null | undefined;
+  newPassword: string | null | undefined;
+  newRePassword: string | null | undefined;
+}
+
 // PROJECT
 enum ProjectStatus {
   new = 'new',

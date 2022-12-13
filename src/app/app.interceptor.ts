@@ -26,7 +26,10 @@ export class AppInterceptor implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    if (req.url.includes('/items') && this.currentUser !== null) {
+    if (
+      (req.url.includes('/items') || req.url.includes('/updatePassword')) &&
+      this.currentUser !== null
+    ) {
       req = req.clone({
         headers: req.headers.append('token', this.currentUser.token),
       });

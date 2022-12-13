@@ -3,7 +3,12 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
 import { environment } from '../../environments/environment';
-import { User, LoginCredentials, RegisterCredentials } from '../types';
+import {
+  User,
+  LoginCredentials,
+  RegisterCredentials,
+  changePasswordCredentials,
+} from '../types';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
@@ -35,6 +40,18 @@ export class AuthService {
         this.currentUser$.next(response.data);
         localStorage.setItem('angular', JSON.stringify(response.data));
         this.router.navigate(['projects']);
+      });
+  }
+
+  changePassword(changePasswordCredentials: changePasswordCredentials): void {
+    this.http
+      .patch(
+        `${environment.AUTH_URL}/updatePassword`,
+        changePasswordCredentials
+      )
+      .subscribe((response: any) => {
+        this.currentUser$.next(response.data);
+        localStorage.setItem('angular', JSON.stringify(response.data));
       });
   }
 

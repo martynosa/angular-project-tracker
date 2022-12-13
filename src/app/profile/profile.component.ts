@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, NgForm, Validators } from '@angular/forms';
 
 import { AuthService } from '../services/auth-service';
-import { User } from '../types';
+import { ProjectService } from '../services/project-service';
+import { changePasswordCredentials, Project, User } from '../types';
+import { matchPasswordsValidator } from '../validators/match-password-validator';
 
 @Component({
   selector: 'app-profile',
@@ -9,9 +12,52 @@ import { User } from '../types';
   styleUrls: ['./profile.component.css'],
 })
 export class ProfileComponent implements OnInit {
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private projectService: ProjectService,
+    private formBuilder: FormBuilder
+  ) {}
 
-  currentUser: User | null = null;
+  isLoading!: boolean;
+  currentUser!: User | null;
+  projects!: Project[];
 
-  ngOnInit(): void {}
+  form = this.formBuilder.group({
+    password: ['', [Validators.required, Validators.minLength(6)]],
+    newPasswords: this.formBuilder.group(
+      {
+        newPassword: ['', [Validators.required, Validators.minLength(6)]],
+        newRePassword: [''],
+      },
+      { validators: [matchPasswordsValidator('newPassword', 'newRePassword')] }
+    ),
+  });
+
+  changePassword(): void {
+    if (!this.form.valid) return;
+
+    const changePasswordCredentials: changePasswordCredentials = {
+      password: this.form.value.password,
+      newPassword: this.form.value.newPasswords?.newPassword,
+      newRePassword: this.form.value.newPasswords?.newRePassword,
+    };
+
+    this.authService.changePassword(changePasswordCredentials);
+  }
+
+  ngOnInit(): void {
+    this.projectService
+      .isLoading()
+      .subscribe((isLoading) => (this.isLoading = isLoading));
+
+    this.authService.getUser().subscribe((user) => {
+      this.currentUser = user;
+    });
+
+    this.projectService.getProjects().subscribe((projects) => {
+      this.projects = projects;
+    });
+
+    this.projectService.fetchProjects();
+  }
 }
