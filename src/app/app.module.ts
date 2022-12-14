@@ -17,6 +17,7 @@ import { LandingComponent } from './landing/landing.component';
 import { ProfileComponent } from './profile/profile.component';
 import { LoadingComponent } from './loading/loading.component';
 import { DetailsComponent } from './details/details.component';
+import { CreateComponent } from './create/create.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { DetailsComponent } from './details/details.component';
     ProfileComponent,
     LoadingComponent,
     DetailsComponent,
+    CreateComponent,
   ],
   imports: [
     BrowserModule,
