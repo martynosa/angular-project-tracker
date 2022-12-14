@@ -10,14 +10,20 @@ import { ProjectsComponent } from './projects/projects.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { GuestGuard } from './guards/guest-guard';
 import { ProfileComponent } from './profile/profile.component';
+import { DetailsComponent } from './details/details.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/landing' },
   { path: 'landing', component: LandingComponent, canActivate: [GuestGuard] },
   { path: 'login', component: LoginComponent, canActivate: [GuestGuard] },
   { path: 'register', component: RegisterComponent, canActivate: [GuestGuard] },
-  { path: 'projects', component: ProjectsComponent, canActivate: [AuthGuard] },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: 'projects', component: ProjectsComponent, canActivate: [AuthGuard] },
+  {
+    path: 'projects/:id',
+    component: DetailsComponent,
+    canActivate: [AuthGuard],
+  },
   { path: '**', component: ErrorPageComponent }, // Wildcard route for a 404 page
 ];
 

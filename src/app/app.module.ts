@@ -16,6 +16,7 @@ import { RegisterComponent } from './register/register.component';
 import { LandingComponent } from './landing/landing.component';
 import { ProfileComponent } from './profile/profile.component';
 import { LoadingComponent } from './loading/loading.component';
+import { DetailsComponent } from './details/details.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { LoadingComponent } from './loading/loading.component';
     RegisterComponent,
     ProfileComponent,
     LoadingComponent,
+    DetailsComponent,
   ],
   imports: [
     BrowserModule,

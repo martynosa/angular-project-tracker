@@ -1,0 +1,23 @@
+<div class="container">
+  <app-loading *ngIf="isLoading"></app-loading>
+  <div
+    [ngClass]="{
+      content: true,
+      new: project.status === 'new',
+      inProgress: project.status === 'inProgress',
+      completed: project.status === 'completed'
+    }"
+    *ngIf="!isLoading"
+  >
+    <h2 class="name">{{ project.name }}</h2>
+    <p class="status">Status: {{ project.status }}</p>
+    <div class="description-group">
+      <p class="description-title">Description:</p>
+      <p>{{ project.description }}</p>
+    </div>
+    <p class="created-at">
+      Date created: {{ project.createdAt.split("T")[0] }}
+    </p>
+    <button class="btn" (click)="deleteHandler()">🗑️ Delete</button>
+  </div>
+</div>

@@ -17,6 +17,7 @@
 
 .name {
   font-size: var(--bg-fs);
+  color: var(--orange-color);
 }
 
 .card {

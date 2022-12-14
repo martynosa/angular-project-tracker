@@ -19,7 +19,7 @@ export class ProfileComponent implements OnInit {
   ) {}
 
   isUserLoading!: boolean;
-  areProjectsLoading!: boolean;
+  areProjectsLoading: boolean = true;
   currentUser!: User | null;
   projects!: Project[];
 
@@ -47,10 +47,6 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.projectService
-      .isLoading()
-      .subscribe((isLoading) => (this.areProjectsLoading = isLoading));
-
     this.authService
       .isLoading()
       .subscribe((isLoading) => (this.isUserLoading = isLoading));
@@ -59,10 +55,9 @@ export class ProfileComponent implements OnInit {
       this.currentUser = user;
     });
 
-    this.projectService.getProjects().subscribe((projects) => {
-      this.projects = projects;
+    this.projectService.fetchProjects().subscribe((response: any) => {
+      this.projects = response.data;
+      this.areProjectsLoading = false;
     });
-
-    this.projectService.fetchProjects();
   }
 }

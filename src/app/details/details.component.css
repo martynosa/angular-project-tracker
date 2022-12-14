@@ -1,0 +1,80 @@
+.container {
+  min-height: calc(100vh - var(--nav-height));
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  color: var(--dark-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--md-gap);
+  background-color: var(--violet-btn-bg-color);
+  padding: var(--md-2v-pd);
+  border-radius: var(--default-brdr-rd);
+  box-shadow: -6px 6px 0 var(--violet-btn-shdw-color);
+}
+
+.name {
+  align-self: center;
+  font-size: var(--bg-fs);
+}
+
+.status {
+  text-transform: capitalize;
+  font-size: var(--md-fs);
+}
+
+.new {
+  background-color: var(--blue-color);
+  box-shadow: -6px 6px 0 var(--new-card-shadow);
+}
+
+.inProgress {
+  background-color: var(--orange-color);
+  box-shadow: -6px 6px 0 var(--inProgress-card-shadow);
+}
+
+.completed {
+  background-color: var(--green-color);
+  box-shadow: -6px 6px 0 var(--completed-card-shadow);
+}
+
+.description-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--default-gap);
+}
+
+.description-title,
+.created-at {
+  font-size: var(--md-fs);
+}
+
+.btn {
+  width: 100%;
+  font-size: var(--md-fs);
+  color: var(--dark-color);
+  background-color: var(--red-btn-bg-color);
+  padding: var(--default-2v-pd);
+  border-radius: var(--default-brdr-rd);
+  box-shadow: 0 0.6rem 0 var(--red-btn-shdw-color);
+  border: none;
+  transition: var(--animation);
+}
+
+.btn:active {
+  transform: translateY(6px);
+  box-shadow: none;
+}
+
+.btn:hover,
+.btn:active,
+.btn:focus-visible {
+  background-color: var(--red-btn-hvr-color);
+  outline: none;
+}

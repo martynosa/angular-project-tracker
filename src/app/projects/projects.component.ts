@@ -13,7 +13,7 @@ import { Project } from '../types';
 export class ProjectsComponent implements OnInit {
   constructor(private projectService: ProjectService) {}
 
-  isLoading!: boolean;
+  isLoading: boolean = true;
   projects!: Project[];
   filteredProjects!: Project[];
 
@@ -33,12 +33,8 @@ export class ProjectsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.projectService
-      .isLoading()
-      .subscribe((isLoading) => (this.isLoading = isLoading));
-
-    this.projectService.getProjects().subscribe((projects) => {
-      this.projects = projects;
+    this.projectService.fetchProjects().subscribe((response: any) => {
+      this.projects = response.data;
       this.newProjects = this.projects.filter((p) => p.status === 'new');
       this.inProgressProjects = this.projects.filter(
         (p) => p.status === 'inProgress'
@@ -46,7 +42,7 @@ export class ProjectsComponent implements OnInit {
       this.completedProjects = this.projects.filter(
         (p) => p.status === 'completed'
       );
+      this.isLoading = false;
     });
-    this.projectService.fetchProjects();
   }
 }

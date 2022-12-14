@@ -32,7 +32,9 @@ enum ProjectStatus {
 }
 
 export interface Project {
+  _id: string;
   name: string;
   description: string;
   status: ProjectStatus;
+  createdAt: string;
 }

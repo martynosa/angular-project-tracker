@@ -4,12 +4,12 @@
 
 export const environment = {
   production: false,
-  AUTH_URL: 'https://project-tracker-server.up.railway.app/auth',
-  ITEMS_URL: 'https://project-tracker-server.up.railway.app/items',
+  // AUTH_URL: 'https://project-tracker-server.up.railway.app/auth',
+  // ITEMS_URL: 'https://project-tracker-server.up.railway.app/items',
 
   // LOCAL
-  // AUTH_URL: 'http://localhost:5000/auth',
-  // ITEMS_URL: 'http://localhost:5000/items',
+  AUTH_URL: 'http://localhost:5000/auth',
+  ITEMS_URL: 'http://localhost:5000/items',
 };
 
 /*
