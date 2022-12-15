@@ -3,7 +3,7 @@ import { FormBuilder, NgForm, Validators } from '@angular/forms';
 
 import { AuthService } from '../services/auth-service';
 import { ProjectService } from '../services/project-service';
-import { changePasswordCredentials, Project, User } from '../types';
+import { Project, User } from '../types';
 import { matchPasswordsValidator } from '../validators/match-password-validator';
 
 @Component({
@@ -37,13 +37,11 @@ export class ProfileComponent implements OnInit {
   changePassword(): void {
     if (!this.form.valid) return;
 
-    const changePasswordCredentials: changePasswordCredentials = {
-      password: this.form.value.password,
-      newPassword: this.form.value.newPasswords?.newPassword,
-      newRePassword: this.form.value.newPasswords?.newRePassword,
-    };
-
-    this.authService.changePassword(changePasswordCredentials);
+    this.authService.changePassword(
+      this.form.value.password,
+      this.form.value.newPasswords?.newPassword,
+      this.form.value.newPasswords?.newRePassword
+    );
   }
 
   ngOnInit(): void {

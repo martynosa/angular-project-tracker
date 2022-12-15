@@ -1,15 +1,10 @@
+// USER
 export interface User {
   id: string;
   email: string;
   name: string;
   photo: string;
   token: string;
-}
-
-export interface changePasswordCredentials {
-  password: string | null | undefined;
-  newPassword: string | null | undefined;
-  newRePassword: string | null | undefined;
 }
 
 // PROJECT
