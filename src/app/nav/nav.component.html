@@ -1,18 +1,19 @@
 <nav class="nav" *ngIf="!currentUser">
-  <a routerLink="/landing">Landing</a>
-  <a routerLink="/login">Login</a>
-  <a routerLink="/register">Register</a>
+  <a routerLink="/landing" routerLinkActive="active-link">Landing</a>
+  <a routerLink="/login" routerLinkActive="active-link">Login</a>
+  <a routerLink="/register" routerLinkActive="active-link">Register</a>
 </nav>
 
 <nav class="nav inner" *ngIf="currentUser">
   <div>
-    <a routerLink="/projects">Projects</a>
-    <a routerLink="/create">Create</a>
-    <a routerLink="/profile">Profile</a>
+    <a routerLink="/projects" routerLinkActive="active-link">Projects</a>
+    <a routerLink="/create" routerLinkActive="active-link">Create</a>
   </div>
 
   <div>
-    <a class="username" routerLink="/profile">{{ currentUser.name }}</a>
+    <a class="username" routerLink="/profile" routerLinkActive="active-link">{{
+      currentUser.name
+    }}</a>
     <button class="logout" (click)="logoutHandler()">logout</button>
   </div>
 </nav>

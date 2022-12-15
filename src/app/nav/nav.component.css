@@ -47,3 +47,7 @@
 .nav button:hover {
   color: var(--hvr-color);
 }
+
+.active-link {
+  color: var(--violet-color) !important;
+}
