@@ -3,12 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
 import { environment } from '../../environments/environment';
-import {
-  User,
-  LoginCredentials,
-  RegisterCredentials,
-  changePasswordCredentials,
-} from '../types';
+import { User, changePasswordCredentials } from '../types';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
@@ -28,9 +23,9 @@ export class AuthService {
     return this.isLoading$;
   }
 
-  login(loginCredentials: LoginCredentials): void {
+  login(email: string, password: string): void {
     this.http
-      .post(`${environment.AUTH_URL}/login`, loginCredentials)
+      .post(`${environment.AUTH_URL}/login`, { email, password })
       .subscribe((response: any) => {
         this.currentUser$.next(response.data);
         localStorage.setItem('angular', JSON.stringify(response.data));
@@ -39,9 +34,19 @@ export class AuthService {
       });
   }
 
-  register(registerCredentials: RegisterCredentials): void {
+  register(
+    email: string | null | undefined,
+    name: string | null | undefined,
+    password: string | null | undefined,
+    rePassword: string | null | undefined
+  ): void {
     this.http
-      .post(`${environment.AUTH_URL}/register`, registerCredentials)
+      .post(`${environment.AUTH_URL}/register`, {
+        email,
+        name,
+        password,
+        rePassword,
+      })
       .subscribe((response: any) => {
         this.currentUser$.next(response.data);
         localStorage.setItem('angular', JSON.stringify(response.data));

@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 import { AuthService } from 'src/app/services/auth-service';
-import { LoginCredentials } from 'src/app/types';
 
 @Component({
   selector: 'app-login',
@@ -15,8 +14,6 @@ export class LoginComponent {
   loginHandler(form: NgForm): void {
     if (!form.valid) return;
 
-    const loginCredentials: LoginCredentials = { ...form.value };
-
-    this.AuthService.login(loginCredentials);
+    this.AuthService.login(form.value.email, form.value.password);
   }
 }

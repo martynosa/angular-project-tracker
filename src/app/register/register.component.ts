@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
 import { AuthService } from '../services/auth-service';
-import { RegisterCredentials } from '../types';
 import { matchPasswordsValidator } from '../validators/match-password-validator';
 
 @Component({
@@ -31,13 +30,11 @@ export class RegisterComponent {
   registerHandler(): void {
     if (!this.form.valid) return;
 
-    const registerCredentials: RegisterCredentials = {
-      email: this.form.value.email,
-      name: this.form.value.name,
-      password: this.form.value.passwords?.password,
-      rePassword: this.form.value.passwords?.rePassword,
-    };
-
-    this.authService.register(registerCredentials);
+    this.authService.register(
+      this.form.value.email,
+      this.form.value.name,
+      this.form.value.passwords?.password,
+      this.form.value.passwords?.rePassword
+    );
   }
 }

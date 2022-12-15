@@ -6,18 +6,6 @@ export interface User {
   token: string;
 }
 
-export interface LoginCredentials {
-  email: string;
-  password: string;
-}
-
-export interface RegisterCredentials {
-  email: string | null | undefined;
-  name: string | null | undefined;
-  password: string | null | undefined;
-  rePassword: string | null | undefined;
-}
-
 export interface changePasswordCredentials {
   password: string | null | undefined;
   newPassword: string | null | undefined;

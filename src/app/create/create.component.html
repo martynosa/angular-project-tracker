@@ -1,1 +1,51 @@
-<p>create works!</p>
+<div class="container">
+  <form
+    class="form"
+    #createForm="ngForm"
+    (ngSubmit)="createHandler(createForm)"
+  >
+    <div class="input-group">
+      <label for="name">Name</label>
+      <input
+        id="name"
+        name="name"
+        type="text"
+        #nameInput="ngModel"
+        ngModel
+        required
+        minlength="3"
+      />
+      <ng-container *ngIf="nameInput.touched">
+        <p class="error-message" *ngIf="nameInput.errors?.['minlength']">
+          Name with 3 or more characters required!
+        </p>
+        <p class="error-message" *ngIf="nameInput.errors?.['required']">
+          Name is required!
+        </p>
+      </ng-container>
+    </div>
+
+    <div class="input-group">
+      <label for="description">Description</label>
+      <input
+        id="description"
+        name="description"
+        type="text"
+        #descriptionInput="ngModel"
+        ngModel
+        required
+        minlength="10"
+      />
+      <ng-container *ngIf="descriptionInput.touched">
+        <p class="error-message" *ngIf="descriptionInput.errors?.['minlength']">
+          Description with 10 or more characters required!
+        </p>
+        <p class="error-message" *ngIf="descriptionInput.errors?.['required']">
+          Description is required!
+        </p>
+      </ng-container>
+    </div>
+
+    <button class="btn">Create</button>
+  </form>
+</div>

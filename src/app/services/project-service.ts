@@ -15,4 +15,11 @@ export class ProjectService {
   fetchProject(id: string) {
     return this.httpClient.get(`${environment.ITEMS_URL}/${id}`);
   }
+
+  createProject(name: string, description: string) {
+    return this.httpClient.post(`${environment.ITEMS_URL}`, {
+      name,
+      description,
+    });
+  }
 }
