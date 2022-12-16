@@ -9,10 +9,14 @@ import { AuthService } from 'src/app/services/auth-service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
+  error!: { status: boolean; message: string };
+
   constructor(private AuthService: AuthService) {}
 
   loginHandler(form: NgForm): void {
     if (!form.valid) return;
+
+    this.AuthService.getError().subscribe((error) => (this.error = error));
 
     this.AuthService.login(form.value.email, form.value.password);
   }
