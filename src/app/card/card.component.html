@@ -6,10 +6,18 @@
     {{ project.description }}
   </p>
   <div class="btn-group">
-    <button class="btn btn-back" (click)="changeStatus('degrade')">
+    <button
+      *ngIf="project.status !== 'new'"
+      class="btn btn-back"
+      (click)="changeStatus($event, project, 'degrade')"
+    >
       &larr;
     </button>
-    <button class="btn btn-forward" (click)="changeStatus('upgrade')">
+    <button
+      *ngIf="project.status !== 'completed'"
+      class="btn btn-forward"
+      (click)="changeStatus($event, project, 'upgrade')"
+    >
       &rarr;
     </button>
   </div>

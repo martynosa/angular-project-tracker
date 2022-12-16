@@ -10,12 +10,13 @@ import { Project } from '../types';
 })
 export class CardComponent {
   @Input() project!: Project;
+  @Input() changeStatus!: (
+    event: Event,
+    project: Project,
+    type: string
+  ) => void;
 
   constructor(private router: Router) {}
-
-  changeStatus(type: string): void {
-    console.log(type);
-  }
 
   navigateTo(): void {
     this.router.navigate(['projects', this.project._id]);
