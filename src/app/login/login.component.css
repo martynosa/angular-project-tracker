@@ -65,3 +65,43 @@
   color: var(--error-color);
   font-size: var(--mn-fs);
 }
+
+/* AUTH LINK */
+.link-group {
+  font-size: var(--sm-fs);
+
+  display: flex;
+  gap: var(--sm-gap);
+
+  margin-bottom: var(--m-48);
+}
+
+.link {
+  display: flex;
+
+  text-decoration: none;
+  transition: var(--animation);
+}
+
+.link:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-shdw);
+}
+
+/* VIOLET LINK*/
+.violet-link {
+  color: var(--violet-btn-bg-color);
+}
+
+.violet-link:hover {
+  color: var(--violet-btn-hvr-color);
+}
+
+/* ORANGE LINK*/
+.orange-link {
+  color: var(--orange-btn-bg-color);
+}
+
+.orange-link:hover {
+  color: var(--orange-btn-hvr-color);
+}
