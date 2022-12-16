@@ -24,6 +24,7 @@ export class AuthService {
   }
 
   login(email: string, password: string): void {
+    this.isLoading$.next(true);
     this.http
       .post(`${environment.AUTH_URL}/login`, { email, password })
       .subscribe((response: any) => {
@@ -40,6 +41,7 @@ export class AuthService {
     password: string | null | undefined,
     rePassword: string | null | undefined
   ): void {
+    this.isLoading$.next(true);
     this.http
       .post(`${environment.AUTH_URL}/register`, {
         email,
@@ -60,6 +62,7 @@ export class AuthService {
     newPassword: string | null | undefined,
     newRePassword: string | null | undefined
   ): void {
+    this.isLoading$.next(true);
     this.http
       .patch(`${environment.AUTH_URL}/updatePassword`, {
         password,
@@ -76,10 +79,10 @@ export class AuthService {
   logout(): void {
     localStorage.clear();
     this.currentUser$.next(null);
-    this.isLoading$.next(false);
   }
 
   getPastUser(): void {
+    this.isLoading$.next(true);
     const pastUser = JSON.parse(localStorage.getItem('angular') || '{}');
 
     if (Object.keys(pastUser).length === 0) {

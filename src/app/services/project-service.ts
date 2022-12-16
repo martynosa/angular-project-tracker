@@ -29,4 +29,8 @@ export class ProjectService {
       status: newStatus,
     });
   }
+
+  deleteProject(id: string) {
+    return this.httpClient.delete(`${environment.ITEMS_URL}/${id}`);
+  }
 }

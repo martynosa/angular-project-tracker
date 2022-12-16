@@ -19,7 +19,8 @@ export class ProfileComponent implements OnInit {
   ) {}
 
   isUserLoading!: boolean;
-  areProjectsLoading: boolean = true;
+  areProjectsLoading!: boolean;
+  isPasswordChangeLoading!: boolean;
   currentUser!: User | null;
   projects!: Project[];
 
@@ -37,6 +38,10 @@ export class ProfileComponent implements OnInit {
   changePassword(): void {
     if (!this.form.valid) return;
 
+    this.authService
+      .isLoading()
+      .subscribe((isLoading) => (this.isUserLoading = isLoading));
+
     this.authService.changePassword(
       this.form.value.password,
       this.form.value.newPasswords?.newPassword,
@@ -53,6 +58,7 @@ export class ProfileComponent implements OnInit {
       this.currentUser = user;
     });
 
+    this.areProjectsLoading = true;
     this.projectService.fetchProjects().subscribe((response: any) => {
       this.projects = response.data;
       this.areProjectsLoading = false;

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProjectService } from '../services/project-service';
 import { Project } from '../types';
 
@@ -11,19 +11,31 @@ import { Project } from '../types';
 export class DetailsComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
-    private projectService: ProjectService
+    private projectService: ProjectService,
+    private router: Router
   ) {}
 
   id!: string;
-  isLoading: boolean = true;
+  isLoading!: boolean;
 
   project!: Project;
 
   deleteHandler(): void {
-    console.log('deleted');
+    this.isLoading = true;
+    this.projectService.deleteProject(this.id).subscribe({
+      next: (response: any) => {
+        this.router.navigate(['/projects']);
+        this.isLoading = false;
+      },
+      error: (err) => {
+        console.log(err);
+        this.isLoading = false;
+      },
+    });
   }
 
   ngOnInit(): void {
+    this.isLoading = true;
     this.activatedRoute.params.subscribe((params) => {
       this.id = params['id'];
     });
