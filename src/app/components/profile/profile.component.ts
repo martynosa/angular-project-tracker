@@ -5,7 +5,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { ProjectService } from 'src/app/services/project.service';
 import { NotificationService } from 'src/app/services/notification.service';
 import { matchPasswordsValidator } from 'src/app/validators/match-password-validator';
-import { Project, User } from 'src/app/types';
+import { Project, User } from 'src/app/interfaces';
 
 @Component({
   selector: 'app-profile',

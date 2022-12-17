@@ -22,6 +22,7 @@ export interface Project {
   createdAt: string;
 }
 
+// NOTIFICATION
 export interface Notification {
   status: boolean;
   type: 'error' | 'success';

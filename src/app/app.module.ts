@@ -19,6 +19,7 @@ import { LoadingComponent } from './components/loading/loading.component';
 import { DetailsComponent } from './components/details/details.component';
 import { CreateComponent } from './components/create/create.component';
 import { NotificationComponent } from './components/notification/notification.component';
+import { ErrorPageComponent } from './components/error-page/error-page.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { NotificationComponent } from './components/notification/notification.co
     DetailsComponent,
     CreateComponent,
     NotificationComponent,
+    ErrorPageComponent,
   ],
   imports: [
     BrowserModule,

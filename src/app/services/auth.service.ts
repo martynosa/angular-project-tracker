@@ -5,7 +5,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 
 import { NotificationService } from './notification.service';
-import { User } from '../types';
+import { User } from '../interfaces';
 
 @Injectable({
   providedIn: 'root',

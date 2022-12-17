@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { Observable } from 'rxjs/internal/Observable';
 
-import { Notification } from '../types';
+import { Notification } from '../interfaces';
 
 @Injectable({
   providedIn: 'root',

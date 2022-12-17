@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { ProjectService } from 'src/app/services/project.service';
 import { NotificationService } from 'src/app/services/notification.service';
-import { Project } from 'src/app/types';
+import { Project } from 'src/app/interfaces';
 
 @Component({
   selector: 'app-details',

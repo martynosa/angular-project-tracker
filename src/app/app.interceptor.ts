@@ -9,7 +9,7 @@ import { Injectable, Provider } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AuthService } from './services/auth.service';
 
-import { User } from './types';
+import { User } from './interfaces';
 
 @Injectable()
 export class AppInterceptor implements HttpInterceptor {

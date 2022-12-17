@@ -1,4 +1,4 @@
-import { Project } from '../types';
+import { Project } from '../interfaces';
 
 const searchService = (projects: Project[], input: string) => {
   return projects.filter((p: Project) => {
