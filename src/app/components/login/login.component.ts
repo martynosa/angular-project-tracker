@@ -10,12 +10,12 @@ import { NotificationService } from 'src/app/services/notification.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  isLoading!: boolean;
-
   constructor(
     private authService: AuthService,
     private notificationService: NotificationService
   ) {}
+
+  isLoading!: boolean;
 
   loginHandler(form: NgForm): void {
     if (!form.valid) {

@@ -11,13 +11,13 @@ import { ProjectService } from '../../services/project.service';
   styleUrls: ['./create.component.css'],
 })
 export class CreateComponent {
+  isLoading: boolean = false;
+
   constructor(
     private projectService: ProjectService,
     private router: Router,
     private notificationService: NotificationService
   ) {}
-
-  isLoading: boolean = false;
 
   createHandler(form: NgForm): void {
     if (!form.valid) {

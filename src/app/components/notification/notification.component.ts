@@ -9,9 +9,9 @@ import { Notification } from 'src/app/types';
   styleUrls: ['./notification.component.css'],
 })
 export class NotificationComponent implements OnInit {
-  notification!: Notification;
-
   constructor(private notificationService: NotificationService) {}
+
+  notification!: Notification;
 
   ngOnInit(): void {
     this.notificationService

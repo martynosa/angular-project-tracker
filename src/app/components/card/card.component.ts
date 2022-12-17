@@ -9,14 +9,14 @@ import { Project } from '../../types';
   styleUrls: ['./card.component.css'],
 })
 export class CardComponent {
+  constructor(private router: Router) {}
+
   @Input() project!: Project;
   @Input() changeStatus!: (
     event: Event,
     project: Project,
     type: string
   ) => void;
-
-  constructor(private router: Router) {}
 
   navigateTo(): void {
     this.router.navigate(['projects', this.project._id]);

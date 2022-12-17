@@ -12,11 +12,6 @@ import { Project } from 'src/app/types';
   styleUrls: ['./projects.component.css'],
 })
 export class ProjectsComponent implements OnInit {
-  constructor(
-    private projectService: ProjectService,
-    private notificationService: NotificationService
-  ) {}
-
   isLoading!: boolean;
   projects!: Project[];
   filteredProjects!: Project[];
@@ -24,6 +19,11 @@ export class ProjectsComponent implements OnInit {
   newProjects!: Project[];
   inProgressProjects!: Project[];
   completedProjects!: Project[];
+
+  constructor(
+    private projectService: ProjectService,
+    private notificationService: NotificationService
+  ) {}
 
   private filterProjects() {
     this.newProjects = this.projects.filter((p) => p.status === 'new');

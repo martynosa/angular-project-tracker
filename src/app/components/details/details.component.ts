@@ -11,16 +11,16 @@ import { Project } from 'src/app/types';
   styleUrls: ['./details.component.css'],
 })
 export class DetailsComponent implements OnInit {
+  id!: string;
+  isLoading!: boolean;
+  project!: Project;
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private projectService: ProjectService,
     private router: Router,
     private notificationService: NotificationService
   ) {}
-
-  id!: string;
-  isLoading!: boolean;
-  project!: Project;
 
   deleteHandler(): void {
     this.isLoading = true;

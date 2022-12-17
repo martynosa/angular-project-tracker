@@ -13,18 +13,18 @@ import { Project, User } from 'src/app/types';
   styleUrls: ['./profile.component.css'],
 })
 export class ProfileComponent implements OnInit {
-  isUserLoading!: boolean;
-  areProjectsLoading!: boolean;
-  isPasswordChangeLoading!: boolean;
-  currentUser!: User | null;
-  projects!: Project[];
-
   constructor(
     private authService: AuthService,
     private projectService: ProjectService,
     private formBuilder: FormBuilder,
     private notificationService: NotificationService
   ) {}
+
+  isUserLoading!: boolean;
+  areProjectsLoading!: boolean;
+  isPasswordChangeLoading!: boolean;
+  currentUser!: User | null;
+  projects!: Project[];
 
   form = this.formBuilder.group({
     password: ['', [Validators.required, Validators.minLength(6)]],

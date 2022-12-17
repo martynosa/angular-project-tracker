@@ -11,13 +11,13 @@ import { matchPasswordsValidator } from 'src/app/validators/match-password-valid
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
-  isLoading!: boolean;
-
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private notificationService: NotificationService
   ) {}
+
+  isLoading!: boolean;
 
   form = this.formBuilder.group({
     email: ['', [Validators.required, Validators.email]],

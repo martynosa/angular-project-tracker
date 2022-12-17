@@ -8,6 +8,8 @@ import { Notification } from '../types';
   providedIn: 'root',
 })
 export class NotificationService {
+  constructor() {}
+
   private defaultNotification: Notification = {
     status: false,
     type: 'error',
@@ -17,8 +19,6 @@ export class NotificationService {
   private notification$$ = new BehaviorSubject<Notification>(
     this.defaultNotification
   );
-
-  constructor() {}
 
   getNotification(): Observable<Notification> {
     return this.notification$$;

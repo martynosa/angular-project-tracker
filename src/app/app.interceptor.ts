@@ -13,13 +13,13 @@ import { User } from './types';
 
 @Injectable()
 export class AppInterceptor implements HttpInterceptor {
-  currentUser!: User | null;
-
   constructor(private authService: AuthService) {
     this.authService.getUser().subscribe((user) => {
       this.currentUser = user;
     });
   }
+
+  currentUser!: User | null;
 
   intercept(
     req: HttpRequest<any>,
