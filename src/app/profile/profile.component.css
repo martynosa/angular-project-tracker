@@ -90,39 +90,3 @@
   color: var(--error-color);
   font-size: var(--mn-fs);
 }
-
-/* NOTIFICATION */
-.notification {
-  position: absolute;
-  top: 5rem;
-
-  font-size: var(--sm-fs);
-  color: var(--dark-color);
-  padding: var(--sm-2v-pd);
-  border-radius: var(--default-brdr-rd);
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--sm-gap);
-
-  background-color: var(--err-not-bg-color);
-  box-shadow: var(--err-not-shdw-color);
-
-  opacity: 0;
-  transition: var(--animation);
-}
-
-.error {
-  background-color: var(--err-not-bg-color);
-  box-shadow: var(--err-not-shdw-color);
-}
-
-.success {
-  background-color: var(--sccss-not-bg-color);
-  box-shadow: var(--sccss-not-shdw-color);
-}
-
-.show {
-  opacity: 1;
-}

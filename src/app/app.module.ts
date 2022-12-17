@@ -18,6 +18,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { LoadingComponent } from './loading/loading.component';
 import { DetailsComponent } from './details/details.component';
 import { CreateComponent } from './create/create.component';
+import { NotificationComponent } from './notification/notification.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { CreateComponent } from './create/create.component';
     LoadingComponent,
     DetailsComponent,
     CreateComponent,
+    NotificationComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,14 +1,4 @@
 <div class="container">
-  <p
-    [ngClass]="{
-      notification: true,
-      error: notification.type === 'error',
-      success: notification.type === 'success',
-      show: notification.status
-    }"
-  >
-    {{ notification.message }}
-  </p>
   <form class="form" [formGroup]="form" (ngSubmit)="registerHandler()">
     <div class="input-group">
       <label for="email">Email</label>

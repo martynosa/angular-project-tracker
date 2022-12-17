@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, NgForm, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 
 import { AuthService } from '../services/auth-service';
-import { NotificationService } from '../services/notification.service';
 import { ProjectService } from '../services/project-service';
-import { Project, User, Notification } from '../types';
+import { Project, User } from '../types';
 import { matchPasswordsValidator } from '../validators/match-password-validator';
 
 @Component({
@@ -18,13 +17,11 @@ export class ProfileComponent implements OnInit {
   isPasswordChangeLoading!: boolean;
   currentUser!: User | null;
   projects!: Project[];
-  notification!: Notification;
 
   constructor(
     private authService: AuthService,
     private projectService: ProjectService,
-    private formBuilder: FormBuilder,
-    private notificationService: NotificationService
+    private formBuilder: FormBuilder
   ) {}
 
   form = this.formBuilder.group({
@@ -53,9 +50,6 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.notificationService
-      .getNotification()
-      .subscribe((notification) => (this.notification = notification));
     this.authService
       .isLoading()
       .subscribe((isLoading) => (this.isUserLoading = isLoading));

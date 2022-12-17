@@ -1,24 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
 import { AuthService } from '../services/auth-service';
-import { NotificationService } from '../services/notification.service';
 import { matchPasswordsValidator } from '../validators/match-password-validator';
-
-import { Notification } from '../types';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
 })
-export class RegisterComponent implements OnInit {
-  notification!: Notification;
-
+export class RegisterComponent {
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService,
-    private notificationService: NotificationService
+    private authService: AuthService
   ) {}
 
   form = this.formBuilder.group({
@@ -42,11 +36,5 @@ export class RegisterComponent implements OnInit {
       this.form.value.passwords?.password,
       this.form.value.passwords?.rePassword
     );
-  }
-
-  ngOnInit(): void {
-    this.notificationService
-      .getNotification()
-      .subscribe((notification) => (this.notification = notification));
   }
 }
