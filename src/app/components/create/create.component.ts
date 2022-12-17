@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { NotificationService } from '../services/notification.service';
 
-import { ProjectService } from '../services/project.service';
+import { NotificationService } from '../../services/notification.service';
+import { ProjectService } from '../../services/project.service';
 
 @Component({
   selector: 'app-create',

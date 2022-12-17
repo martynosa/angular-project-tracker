@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { NotificationService } from '../services/notification.service';
 
-import { ProjectService } from '../services/project.service';
-import searchService from '../services/search.service';
-import statusService from '../services/status.service';
-
-import { Project } from '../types';
+import { ProjectService } from 'src/app/services/project.service';
+import { NotificationService } from 'src/app/services/notification.service';
+import searchService from 'src/app/services/search.service';
+import statusService from 'src/app/services/status.service';
+import { Project } from 'src/app/types';
 
 @Component({
   selector: 'app-projects',

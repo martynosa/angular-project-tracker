@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
-import { AuthService } from '../services/auth.service';
-import { NotificationService } from '../services/notification.service';
-import { ProjectService } from '../services/project.service';
-import { Project, User } from '../types';
-import { matchPasswordsValidator } from '../validators/match-password-validator';
+import { AuthService } from 'src/app/services/auth.service';
+import { ProjectService } from 'src/app/services/project.service';
+import { NotificationService } from 'src/app/services/notification.service';
+import { matchPasswordsValidator } from 'src/app/validators/match-password-validator';
+import { Project, User } from 'src/app/types';
 
 @Component({
   selector: 'app-profile',

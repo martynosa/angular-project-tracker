@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Project } from '../types';
+import { Project } from '../../types';
 
 @Component({
   selector: 'app-card',

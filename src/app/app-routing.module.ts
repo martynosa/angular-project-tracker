@@ -1,17 +1,17 @@
-import { createComponent, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AuthGuard } from './guards/auth-guard';
-
-import { LandingComponent } from './landing/landing.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
-import { ProjectsComponent } from './projects/projects.component';
-import { ErrorPageComponent } from './error-page/error-page.component';
 import { GuestGuard } from './guards/guest-guard';
-import { ProfileComponent } from './profile/profile.component';
-import { DetailsComponent } from './details/details.component';
-import { CreateComponent } from './create/create.component';
+
+import { LandingComponent } from './components/landing/landing.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { ProjectsComponent } from './components/projects/projects.component';
+import { ErrorPageComponent } from './components/error-page/error-page.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { DetailsComponent } from './components/details/details.component';
+import { CreateComponent } from './components/create/create.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/landing' },

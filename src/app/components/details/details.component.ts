@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NotificationService } from '../services/notification.service';
-import { ProjectService } from '../services/project.service';
-import { Project } from '../types';
+
+import { ProjectService } from 'src/app/services/project.service';
+import { NotificationService } from 'src/app/services/notification.service';
+import { Project } from 'src/app/types';
 
 @Component({
   selector: 'app-details',

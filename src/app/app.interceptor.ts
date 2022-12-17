@@ -4,7 +4,6 @@ import {
   HttpInterceptor,
   HttpRequest,
   HTTP_INTERCEPTORS,
-  HttpHeaders,
 } from '@angular/common/http';
 import { Injectable, Provider } from '@angular/core';
 import { Observable } from 'rxjs';
