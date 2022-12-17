@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NotificationService } from '../services/notification.service';
 
 import { ProjectService } from '../services/project.service';
 import searchService from '../services/search.service';
@@ -12,7 +13,10 @@ import { Project } from '../types';
   styleUrls: ['./projects.component.css'],
 })
 export class ProjectsComponent implements OnInit {
-  constructor(private projectService: ProjectService) {}
+  constructor(
+    private projectService: ProjectService,
+    private notificationService: NotificationService
+  ) {}
 
   isLoading!: boolean;
   projects!: Project[];
@@ -64,11 +68,19 @@ export class ProjectsComponent implements OnInit {
         });
         this.filterProjects();
         this.isLoading = false;
+        this.notificationService.setNotification({
+          status: true,
+          type: 'success',
+          message: 'Project status changed successfully.',
+        });
       },
-
-      error: (err) => {
-        console.log(err);
+      error: () => {
         this.isLoading = false;
+        this.notificationService.setNotification({
+          status: true,
+          type: 'error',
+          message: 'Internal error, please try again later!',
+        });
       },
     });
   };

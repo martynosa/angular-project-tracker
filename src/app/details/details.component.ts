@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NotificationService } from '../services/notification.service';
 import { ProjectService } from '../services/project.service';
 import { Project } from '../types';
 
@@ -12,7 +13,8 @@ export class DetailsComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private projectService: ProjectService,
-    private router: Router
+    private router: Router,
+    private notificationService: NotificationService
   ) {}
 
   id!: string;
@@ -23,12 +25,21 @@ export class DetailsComponent implements OnInit {
   deleteHandler(): void {
     this.isLoading = true;
     this.projectService.deleteProject(this.id).subscribe({
-      next: (response: any) => {
-        this.router.navigate(['/projects']);
+      next: () => {
         this.isLoading = false;
+        this.notificationService.setNotification({
+          status: true,
+          type: 'success',
+          message: 'Project deleted successfully.',
+        });
+        this.router.navigate(['/projects']);
       },
-      error: (err) => {
-        console.log(err);
+      error: () => {
+        this.notificationService.setNotification({
+          status: true,
+          type: 'error',
+          message: 'Internal error, please try again later!',
+        });
         this.isLoading = false;
       },
     });
