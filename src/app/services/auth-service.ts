@@ -15,16 +15,21 @@ export class AuthService {
   private currentUser$ = new BehaviorSubject<User | null>(null);
   private isLoading$ = new BehaviorSubject<boolean>(true);
 
-  // TEST
   private error$$ = new BehaviorSubject<{ status: boolean; message: string }>({
     status: false,
     message: '',
   });
 
+  private setError(err: any): void {
+    setTimeout(() => {
+      this.error$$.next({ status: false, message: '' });
+    }, 2000);
+    this.error$$.next({ status: true, message: err.error.message });
+  }
+
   getError(): Observable<{ status: boolean; message: string }> {
     return this.error$$;
   }
-  // /TEST
 
   getUser(): Observable<User | null> {
     return this.currentUser$;
@@ -46,7 +51,7 @@ export class AuthService {
           this.router.navigate(['projects']);
         },
         error: (error) => {
-          this.error$$.next({ status: true, message: error.error.message });
+          this.setError(error);
           this.isLoading$.next(false);
         },
       });
@@ -66,11 +71,17 @@ export class AuthService {
         password,
         rePassword,
       })
-      .subscribe((response: any) => {
-        this.currentUser$.next(response.data);
-        localStorage.setItem('angular', JSON.stringify(response.data));
-        this.isLoading$.next(false);
-        this.router.navigate(['projects']);
+      .subscribe({
+        next: (response: any) => {
+          this.currentUser$.next(response.data);
+          localStorage.setItem('angular', JSON.stringify(response.data));
+          this.isLoading$.next(false);
+          this.router.navigate(['projects']);
+        },
+        error: (error) => {
+          this.setError(error);
+          this.isLoading$.next(false);
+        },
       });
   }
 
@@ -86,10 +97,16 @@ export class AuthService {
         newPassword,
         newRePassword,
       })
-      .subscribe((response: any) => {
-        this.currentUser$.next(response.data);
-        localStorage.setItem('angular', JSON.stringify(response.data));
-        this.isLoading$.next(false);
+      .subscribe({
+        next: (response: any) => {
+          this.currentUser$.next(response.data);
+          localStorage.setItem('angular', JSON.stringify(response.data));
+          this.isLoading$.next(false);
+        },
+        error: (error) => {
+          this.setError(error);
+          this.isLoading$.next(false);
+        },
       });
   }
 

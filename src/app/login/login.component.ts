@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 import { AuthService } from 'src/app/services/auth-service';
@@ -8,16 +8,18 @@ import { AuthService } from 'src/app/services/auth-service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   error!: { status: boolean; message: string };
 
-  constructor(private AuthService: AuthService) {}
+  constructor(private authService: AuthService) {}
 
   loginHandler(form: NgForm): void {
     if (!form.valid) return;
 
-    this.AuthService.getError().subscribe((error) => (this.error = error));
+    this.authService.login(form.value.email, form.value.password);
+  }
 
-    this.AuthService.login(form.value.email, form.value.password);
+  ngOnInit(): void {
+    this.authService.getError().subscribe((error) => (this.error = error));
   }
 }

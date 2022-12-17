@@ -96,3 +96,22 @@
 .violet-link:hover {
   color: var(--violet-btn-hvr-color);
 }
+
+/* ERROR NOTIFICATION */
+.error-notification {
+  font-size: var(--sm-fs);
+  color: var(--dark-color);
+  padding: var(--sm-2v-pd);
+  border-radius: var(--default-brdr-rd);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sm-gap);
+
+  background-color: var(--err-not-bg-color);
+  box-shadow: var(--err-not-shdw-color);
+
+  position: absolute;
+  top: 5rem;
+}

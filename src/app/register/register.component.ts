@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
 import { AuthService } from '../services/auth-service';
@@ -9,7 +9,9 @@ import { matchPasswordsValidator } from '../validators/match-password-validator'
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnInit {
+  error!: { status: boolean; message: string };
+
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService
@@ -36,5 +38,9 @@ export class RegisterComponent {
       this.form.value.passwords?.password,
       this.form.value.passwords?.rePassword
     );
+  }
+
+  ngOnInit(): void {
+    this.authService.getError().subscribe((error) => (this.error = error));
   }
 }

@@ -1,4 +1,5 @@
 <div class="container">
+  <p class="error-notification" *ngIf="error.status">{{ error.message }}</p>
   <form class="form" [formGroup]="form" (ngSubmit)="registerHandler()">
     <div class="input-group">
       <label for="email">Email</label>

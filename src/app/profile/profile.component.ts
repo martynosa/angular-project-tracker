@@ -12,17 +12,18 @@ import { matchPasswordsValidator } from '../validators/match-password-validator'
   styleUrls: ['./profile.component.css'],
 })
 export class ProfileComponent implements OnInit {
-  constructor(
-    private authService: AuthService,
-    private projectService: ProjectService,
-    private formBuilder: FormBuilder
-  ) {}
-
   isUserLoading!: boolean;
   areProjectsLoading!: boolean;
   isPasswordChangeLoading!: boolean;
   currentUser!: User | null;
   projects!: Project[];
+  error!: { status: boolean; message: string };
+
+  constructor(
+    private authService: AuthService,
+    private projectService: ProjectService,
+    private formBuilder: FormBuilder
+  ) {}
 
   form = this.formBuilder.group({
     password: ['', [Validators.required, Validators.minLength(6)]],
@@ -50,6 +51,8 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.authService.getError().subscribe((error) => (this.error = error));
+
     this.authService
       .isLoading()
       .subscribe((isLoading) => (this.isUserLoading = isLoading));
