@@ -20,8 +20,14 @@ export class CreateComponent implements OnInit {
   isLoading: boolean = false;
 
   createHandler(form: NgForm): void {
-    if (!form.valid) return;
-
+    if (!form.valid) {
+      this.notificationService.setNotification({
+        status: true,
+        type: 'error',
+        message: 'Please fill in the form!',
+      });
+      return;
+    }
     this.isLoading = true;
 
     this.projectService

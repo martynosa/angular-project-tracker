@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
 import { AuthService } from '../services/auth.service';
+import { NotificationService } from '../services/notification.service';
 import { ProjectService } from '../services/project.service';
 import { Project, User } from '../types';
 import { matchPasswordsValidator } from '../validators/match-password-validator';
@@ -21,7 +22,8 @@ export class ProfileComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private projectService: ProjectService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private notificationService: NotificationService
   ) {}
 
   form = this.formBuilder.group({
@@ -36,7 +38,14 @@ export class ProfileComponent implements OnInit {
   });
 
   changePassword(): void {
-    if (!this.form.valid) return;
+    if (!this.form.valid) {
+      this.notificationService.setNotification({
+        status: true,
+        type: 'error',
+        message: 'Please fill in the form!',
+      });
+      return;
+    }
 
     this.authService
       .isLoading()

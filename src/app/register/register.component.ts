@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
 import { AuthService } from '../services/auth.service';
+import { NotificationService } from '../services/notification.service';
 import { matchPasswordsValidator } from '../validators/match-password-validator';
 
 @Component({
@@ -12,7 +13,8 @@ import { matchPasswordsValidator } from '../validators/match-password-validator'
 export class RegisterComponent {
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private notificationService: NotificationService
   ) {}
 
   form = this.formBuilder.group({
@@ -28,7 +30,14 @@ export class RegisterComponent {
   });
 
   registerHandler(): void {
-    if (!this.form.valid) return;
+    if (!this.form.valid) {
+      this.notificationService.setNotification({
+        status: true,
+        type: 'error',
+        message: 'Please fill in the form!',
+      });
+      return;
+    }
 
     this.authService.register(
       this.form.value.email,
