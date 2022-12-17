@@ -21,3 +21,9 @@ export interface Project {
   status: ProjectStatus;
   createdAt: string;
 }
+
+export interface Notification {
+  status: boolean;
+  type: 'error' | 'success';
+  message: string;
+}

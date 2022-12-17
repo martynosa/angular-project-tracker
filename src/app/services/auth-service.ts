@@ -5,31 +5,36 @@ import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
 import { User } from '../types';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { NotificationService } from './notification.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private notificationService: NotificationService
+  ) {}
 
   private currentUser$ = new BehaviorSubject<User | null>(null);
   private isLoading$ = new BehaviorSubject<boolean>(true);
 
-  private error$$ = new BehaviorSubject<{ status: boolean; message: string }>({
-    status: false,
-    message: '',
-  });
+  // private error$$ = new BehaviorSubject<{ status: boolean; message: string }>({
+  //   status: false,
+  //   message: '',
+  // });
 
-  private setError(err: any): void {
-    setTimeout(() => {
-      this.error$$.next({ status: false, message: '' });
-    }, 2000);
-    this.error$$.next({ status: true, message: err.error.message });
-  }
+  // private setError(err: any): void {
+  //   setTimeout(() => {
+  //     this.error$$.next({ status: false, message: '' });
+  //   }, 2000);
+  //   this.error$$.next({ status: true, message: err.error.message });
+  // }
 
-  getError(): Observable<{ status: boolean; message: string }> {
-    return this.error$$;
-  }
+  // getError(): Observable<{ status: boolean; message: string }> {
+  //   return this.error$$;
+  // }
 
   getUser(): Observable<User | null> {
     return this.currentUser$;
@@ -51,7 +56,12 @@ export class AuthService {
           this.router.navigate(['projects']);
         },
         error: (error) => {
-          this.setError(error);
+          this.notificationService.setNotification({
+            status: true,
+            type: 'error',
+            message: error.error.message,
+          });
+          // this.setError(error);
           this.isLoading$.next(false);
         },
       });
@@ -79,7 +89,12 @@ export class AuthService {
           this.router.navigate(['projects']);
         },
         error: (error) => {
-          this.setError(error);
+          this.notificationService.setNotification({
+            status: true,
+            type: 'error',
+            message: error.error.message,
+          });
+          // this.setError(error);
           this.isLoading$.next(false);
         },
       });
@@ -104,7 +119,12 @@ export class AuthService {
           this.isLoading$.next(false);
         },
         error: (error) => {
-          this.setError(error);
+          this.notificationService.setNotification({
+            status: true,
+            type: 'error',
+            message: error.error.message,
+          });
+          // this.setError(error);
           this.isLoading$.next(false);
         },
       });

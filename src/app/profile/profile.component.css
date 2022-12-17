@@ -91,8 +91,11 @@
   font-size: var(--mn-fs);
 }
 
-/* ERROR NOTIFICATION */
-.error-notification {
+/* NOTIFICATION */
+.notification {
+  position: absolute;
+  top: 5rem;
+
   font-size: var(--sm-fs);
   color: var(--dark-color);
   padding: var(--sm-2v-pd);
@@ -106,6 +109,20 @@
   background-color: var(--err-not-bg-color);
   box-shadow: var(--err-not-shdw-color);
 
-  position: absolute;
-  top: 5rem;
+  opacity: 0;
+  transition: var(--animation);
+}
+
+.error {
+  background-color: var(--err-not-bg-color);
+  box-shadow: var(--err-not-shdw-color);
+}
+
+.success {
+  background-color: var(--sccss-not-bg-color);
+  box-shadow: var(--sccss-not-shdw-color);
+}
+
+.show {
+  opacity: 1;
 }

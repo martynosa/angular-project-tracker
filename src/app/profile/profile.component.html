@@ -1,5 +1,14 @@
 <div class="container">
-  <p class="error-notification" *ngIf="error.status">{{ error.message }}</p>
+  <p
+    [ngClass]="{
+      notification: true,
+      error: notification.type === 'error',
+      success: notification.type === 'success',
+      show: notification.status
+    }"
+  >
+    {{ notification.message }}
+  </p>
   <app-loading *ngIf="isUserLoading || areProjectsLoading"></app-loading>
   <div class="content" *ngIf="!(isUserLoading || areProjectsLoading)">
     <h1 class="name">{{ currentUser?.name }}</h1>

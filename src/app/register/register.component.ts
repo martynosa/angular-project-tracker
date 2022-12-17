@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
 import { AuthService } from '../services/auth-service';
+import { NotificationService } from '../services/notification.service';
 import { matchPasswordsValidator } from '../validators/match-password-validator';
+
+import { Notification } from '../types';
 
 @Component({
   selector: 'app-register',
@@ -10,11 +13,12 @@ import { matchPasswordsValidator } from '../validators/match-password-validator'
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
-  error!: { status: boolean; message: string };
+  notification!: Notification;
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private notificationService: NotificationService
   ) {}
 
   form = this.formBuilder.group({
@@ -41,6 +45,8 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.authService.getError().subscribe((error) => (this.error = error));
+    this.notificationService
+      .getNotification()
+      .subscribe((notification) => (this.notification = notification));
   }
 }

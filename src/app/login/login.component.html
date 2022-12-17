@@ -1,5 +1,14 @@
 <div class="container">
-  <p class="error-notification" *ngIf="error.status">{{ error.message }}</p>
+  <p
+    [ngClass]="{
+      notification: true,
+      error: notification.type === 'error',
+      success: notification.type === 'success',
+      show: notification.status
+    }"
+  >
+    {{ notification.message }}
+  </p>
   <form class="form" #loginForm="ngForm" (ngSubmit)="loginHandler(loginForm)">
     <div class="input-group">
       <label for="email">Email</label>
