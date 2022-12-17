@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
-import { AuthService } from '../services/auth-service';
+import { AuthService } from '../services/auth.service';
 import { matchPasswordsValidator } from '../validators/match-password-validator';
 
 @Component({

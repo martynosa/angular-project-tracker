@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { ProjectService } from '../services/project-service';
+import { ProjectService } from '../services/project.service';
 
 @Component({
   selector: 'app-create',

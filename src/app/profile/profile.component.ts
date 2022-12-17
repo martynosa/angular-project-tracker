@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
-import { AuthService } from '../services/auth-service';
-import { ProjectService } from '../services/project-service';
+import { AuthService } from '../services/auth.service';
+import { ProjectService } from '../services/project.service';
 import { Project, User } from '../types';
 import { matchPasswordsValidator } from '../validators/match-password-validator';
 

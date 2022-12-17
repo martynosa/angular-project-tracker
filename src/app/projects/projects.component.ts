@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ProjectService } from '../services/project-service';
-import searchService from '../services/search-service';
-import statusService from '../services/status-service';
+import { ProjectService } from '../services/project.service';
+import searchService from '../services/search.service';
+import statusService from '../services/status.service';
 
 import { Project } from '../types';
 
