@@ -1,4 +1,4 @@
-# MyApp
+# Project-tracker
 
 Kanban style board application made with Angular where users can register, login, create and manage their projects.
 
