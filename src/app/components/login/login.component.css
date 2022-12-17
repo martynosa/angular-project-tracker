@@ -105,3 +105,11 @@
 .orange-link:hover {
   color: var(--orange-btn-hvr-color);
 }
+
+/* LOADING */
+.isLoading {
+  color: var(--inactive-btn-font-color);
+  background-color: var(--inactive-btn-bg-color) !important;
+  transform: translateY(6px);
+  box-shadow: none;
+}

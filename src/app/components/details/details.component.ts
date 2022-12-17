@@ -20,7 +20,6 @@ export class DetailsComponent implements OnInit {
 
   id!: string;
   isLoading!: boolean;
-
   project!: Project;
 
   deleteHandler(): void {
@@ -36,12 +35,12 @@ export class DetailsComponent implements OnInit {
         this.router.navigate(['/projects']);
       },
       error: () => {
+        this.isLoading = false;
         this.notificationService.setNotification({
           status: true,
           type: 'error',
           message: 'Internal error, please try again later!',
         });
-        this.isLoading = false;
       },
     });
   }

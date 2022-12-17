@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -10,7 +10,7 @@ import { ProjectService } from '../../services/project.service';
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.css'],
 })
-export class CreateComponent implements OnInit {
+export class CreateComponent {
   constructor(
     private projectService: ProjectService,
     private router: Router,
@@ -28,6 +28,7 @@ export class CreateComponent implements OnInit {
       });
       return;
     }
+
     this.isLoading = true;
 
     this.projectService
@@ -52,6 +53,4 @@ export class CreateComponent implements OnInit {
         },
       });
   }
-
-  ngOnInit(): void {}
 }

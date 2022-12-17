@@ -1,5 +1,7 @@
 <div class="container">
+  <app-loading *ngIf="isLoading"></app-loading>
   <form
+    *ngIf="!isLoading"
     class="form"
     #createForm="ngForm"
     (ngSubmit)="createHandler(createForm)"

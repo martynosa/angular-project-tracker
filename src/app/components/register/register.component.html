@@ -69,6 +69,12 @@
       <a class="link violet-link" routerLink="/login">&larr; Login</a>
     </div>
 
-    <button class="btn">Register</button>
+    <button
+      class="btn"
+      [disabled]="isLoading"
+      [ngClass]="{ isLoading: isLoading }"
+    >
+      Register
+    </button>
   </form>
 </div>

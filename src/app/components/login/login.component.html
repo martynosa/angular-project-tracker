@@ -47,6 +47,12 @@
       <a class="link orange-link" routerLink="/register">Register &rarr;</a>
     </div>
 
-    <button class="btn">Login</button>
+    <button
+      class="btn"
+      [disabled]="isLoading"
+      [ngClass]="{ isLoading: isLoading }"
+    >
+      Login
+    </button>
   </form>
 </div>
